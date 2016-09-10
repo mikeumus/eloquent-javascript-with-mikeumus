@@ -1,3 +1,3 @@
-# My Awesome Book
+### Eloquent JavaScript, Chapter 3: Functions
+#### Exercise 2: Recursion
 
-This file file serves as your book's preface, a great place to describe your book's content and ideas.
