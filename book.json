@@ -1,6 +1,5 @@
 {
     "plugins": [
-        "-ace",
         "-youtube",
         "code-editor"
     ],
