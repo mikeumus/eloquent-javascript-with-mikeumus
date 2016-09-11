@@ -1,6 +1,7 @@
 {
     "plugins": [
-        "-youtube"
+        "-youtube",
+        "codepen"
     ],
     "pluginsConfig": {}
 }
