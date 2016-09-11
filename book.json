@@ -1,7 +1,8 @@
 {
     "plugins": [
         "ace",
-        "-youtube"
+        "-youtube",
+        "code-editor"
     ],
     "pluginsConfig": {}
 }
