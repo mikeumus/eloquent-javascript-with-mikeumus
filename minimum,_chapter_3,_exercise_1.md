@@ -14,5 +14,4 @@ console.log(min(0, -10));
 ```
 
 #### Exercise Code:
-<p data-height="265" data-theme-id="light" data-slug-hash="kkrQWV" data-default-tab="result" data-user="mikeumus" data-embed-version="2" data-preview="true" class="codepen">See the Pen <a href="https://codepen.io/mikeumus/pen/kkrQWV/">kkrQWV</a></p>
-<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+
