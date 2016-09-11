@@ -14,19 +14,6 @@ console.log(min(0, -10));
 ```
 
 #### Exercise Code:
-{%ace edit=true, lang='javascript'%}
-(function(){ // This is our self invoking closure. We do this to keep the global environment pure. 
-	
-	// Long obvious answer: 
-	function min(arg1, arg2){
-		if(arg1 < arg2){
-			return arg1;
-		} else{
-			return arg2;
-		}
-	}	
-	console.log(min(0, 10));
-	console.log(min(0, -10));
-
-})();
-{%endace%}
+{% codeeditor   src='https://raw.githubusercontent.com/mikeumus/Eloquent-Javascript/master/minimum_ch3-e1.html',
+                language='javascript', readOnly='false', theme='github' %}
+{% endcodeeditor %}
