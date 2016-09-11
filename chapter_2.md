@@ -14,19 +14,5 @@ console.log(min(0, -10));
 ```
 
 #### Exercise Code:
-{%ace edit=true, lang='javascript'%}
-(function(){ // This is our self invoking closure. We do this to keep the global environment pure. 
-	
-	// Long obvious answer: 
-	function min(arg1, arg2){
-		if(arg1 < arg2){
-			return arg1;
-		} else{
-			return arg2;
-		}
-	}	
-	console.log(min(0, 10));
-	console.log(min(0, -10));
-
-})();
-{%endace%}
+<p data-height="265" data-theme-id="light" data-slug-hash="kkrQWV" data-default-tab="result" data-user="mikeumus" data-embed-version="2" data-preview="true" class="codepen">See the Pen <a href="https://codepen.io/mikeumus/pen/kkrQWV/">kkrQWV</a></p>
+<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
