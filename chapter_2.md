@@ -14,4 +14,4 @@ console.log(min(0, -10));
 ```
 
 #### Exercise Code:
-[](codepen://mikeumus/kkrQWV?height=800&theme=0)
+[](codepen://mikeumus/kkrQWV?height=999&theme=0)
