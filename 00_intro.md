@@ -15,20 +15,20 @@ Casual computing has become much more widespread in the past 20 years, and langu
 
 This book intends to make you familiar enough with this language to be able to make a computer do what you want.
 
-On programming
+## On programming
 
-I do not enlighten those who are not eager to learn, nor arouse those who are not anxious to give an explanation themselves. If I have presented one corner of the square and they cannot come back to me with the other three, I should not go over the points again.
 
-Confucius
+> I do not enlighten those who are not eager to learn, nor arouse those who are not anxious to give an explanation themselves. If I have presented one corner of the square and they cannot come back to me with the other three, I should not go over the points again. — **Confucius**
+
+
 Besides explaining JavaScript, I also will introduce the basic principles of programming. Programming, it turns out, is hard. The fundamental rules are typically simple and clear. But programs built on top of these rules tend to become complex enough to introduce their own rules and complexity. You’re building your own maze, in a way, and you might just get lost in it.
 
-There will be times when reading this book feels terribly frustrating. If you are new to programming, there will be a lot of new material to digest. Much of this material will then be combined in ways that require you to make additional connections.
+There will be times when reading this book feels terribly frustrating. If you are new to programming, there will be a lot of new material to digest. Much of this material will then be *combined* in ways that require you to make additional connections.
 
 It is up to you to make the necessary effort. When you are struggling to follow the book, do not jump to any conclusions about your own capabilities. You are fine—you just need to keep at it. Take a break, reread some material, and always make sure you read and understand the example programs and exercises. Learning is hard work, but everything you learn is yours and will make subsequent learning easier.
 
-The computer programmer is a creator of universes for which he [sic] alone is responsible. Universes of virtually unlimited complexity can be created in the form of computer programs.
+> The computer programmer is a creator of universes for which he [sic] alone is responsible. Universes of virtually unlimited complexity can be created in the form of computer programs. — **Joseph Weizenbaum**, *Computer Power and Human Reason*
 
-Joseph Weizenbaum, Computer Power and Human Reason
 A program is many things. It is a piece of text typed by a programmer, it is the directing force that makes the computer do what it does, it is data in the computer’s memory, yet it controls the actions performed on this same memory. Analogies that try to compare programs to objects we are familiar with tend to fall short. A superficially fitting one is that of a machine—lots of separate parts tend to be involved, and to make the whole thing tick, we have to consider the ways in which these parts interconnect and contribute to the operation of the whole.
 
 A computer is a machine built to act as a host for these immaterial machines. Computers themselves can do only stupidly straightforward things. The reason they are so useful is that they do these things at an incredibly high speed. A program can ingeniously combine an enormous number of these simple actions in order to do very complicated things.
@@ -37,14 +37,15 @@ To some of us, writing computer programs is a fascinating game. A program is a b
 
 But without care, a program’s size and complexity will grow out of control, confusing even the person who created it. Keeping programs under control is the main problem of programming. When a program works, it is beautiful. The art of programming is the skill of controlling complexity. The great program is subdued—made simple in its complexity.
 
-Many programmers believe that this complexity is best managed by using only a small set of well-understood techniques in their programs. They have composed strict rules (“best practices”) prescribing the form programs should have, and the more zealous among them will consider those who go outside of this safe little zone to be bad programmers.
+Many programmers believe that this complexity is best managed by using only a small set of well-understood techniques in their programs. They have composed strict rules (“best practices”) prescribing the form programs should have, and the more zealous among them will consider those who go outside of this safe little zone to be *bad programmers*.
 
 What hostility to the richness of programming—to try to reduce it to something straightforward and predictable, to place a taboo on all the weird and beautiful programs! The landscape of programming techniques is enormous, fascinating in its diversity, and still largely unexplored. It is certainly dangerous going, luring the inexperienced programmer into all kinds of confusion, but that only means you should proceed with caution and keep your wits about you. As you learn there will always be new challenges and new territory to explore. Programmers who refuse to keep exploring will stagnate, forget their joy, and get bored with their craft.
 
-Why language matters
+## Why language matters
 
 In the beginning, at the birth of computing, there were no programming languages. Programs looked something like this:
 
+```
 00110001 00000000 00000000
 00110001 00000001 00000001
 00110011 00000001 00000010
@@ -54,12 +55,15 @@ In the beginning, at the birth of computing, there were no programming languages
 01000001 00000001 00000001
 00010000 00000010 00000000
 01100010 00000000 00000000
-That is a program to add the numbers from 1 to 10 together and print out the result: 1 + 2 + ... + 10 = 55. It could run on a simple, hypothetical machine. To program early computers, it was necessary to set large arrays of switches in the right position or punch holes in strips of cardboard and feed them to the computer. You can probably imagine how tedious and error-prone this procedure was. Even writing simple programs required much cleverness and discipline. Complex ones were nearly inconceivable.
+```
+
+That is a program to add the numbers from 1 to 10 together and print out the result: `1 + 2 + ... + 10 = 55`. It could run on a simple, hypothetical machine. To program early computers, it was necessary to set large arrays of switches in the right position or punch holes in strips of cardboard and feed them to the computer. You can probably imagine how tedious and error-prone this procedure was. Even writing simple programs required much cleverness and discipline. Complex ones were nearly inconceivable.
 
 Of course, manually entering these arcane patterns of bits (the ones and zeros) did give the programmer a profound sense of being a mighty wizard. And that has to be worth something in terms of job satisfaction.
 
 Each line of the previous program contains a single instruction. It could be written in English like this:
 
+```
 1. Store the number 0 in memory location 0.
 2. Store the number 1 in memory location 1.
 3. Store the value of memory location 1 in memory location 2.
@@ -70,8 +74,11 @@ Each line of the previous program contains a single instruction. It could be wri
 7. Add the number 1 to the value of memory location 1.
 8. Continue with instruction 3.
 9. Output the value of memory location 0.
+```
+
 Although that is already more readable than the soup of bits, it is still rather unpleasant. It might help to use names instead of numbers for the instructions and memory locations.
 
+```
  Set “total” to 0.
  Set “count” to 1.
 [loop]
@@ -83,17 +90,14 @@ Although that is already more readable than the soup of bits, it is still rather
  Continue at [loop].
 [end]
  Output “total”.
+ ```
+ 
 Can you see how the program works at this point? The first two lines give two memory locations their starting values: total will be used to build up the result of the computation, and count will keep track of the number that we are currently looking at. The lines using compare are probably the weirdest ones. The program wants to see whether count is equal to 11 in order to decide whether it can stop running. Because our hypothetical machine is rather primitive, it can only test whether a number is zero and make a decision (or jump) based on that. So it uses the memory location labeled compare to compute the value of count - 11 and makes a decision based on that value. The next two lines add the value of count to the result and increment count by 1 every time the program has decided that count is not 11 yet.
 
 Here is the same program in JavaScript:
+<iframe height='159' scrolling='no' src='//codepen.io/mikeumus/embed/Kgdbvd/?height=159&theme-id=light&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/mikeumus/pen/Kgdbvd/'>Kgdbvd</a> by Michael D Mooring (<a href='http://codepen.io/mikeumus'>@mikeumus</a>) on <a href='http://codepen.io'>CodePen</a>.
+</iframe>
 
-var total = 0, count = 1;
-while (count <= 10) {
-  total += count;
-  count += 1;
-}
-console.log(total);
-// → 55
 This version gives us a few more improvements. Most importantly, there is no need to specify the way we want the program to jump back and forth anymore. The while language construct takes care of that. It continues executing the block (wrapped in braces) below it as long as the condition it was given holds. That condition is count <= 10, which means “count is less than or equal to 10”. We no longer have to create a temporary value and compare that to zero, which was an uninteresting detail. Part of the power of programming languages is that they take care of uninteresting details for us.
 
 At the end of the program, after the while construct has finished, the console.log operation is applied to the result in order to write it as output.
