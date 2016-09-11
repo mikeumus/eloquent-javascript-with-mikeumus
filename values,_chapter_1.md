@@ -2,7 +2,7 @@
 ## Values, Types, and Operators
 
 
-> Below the surface of the machine, the program moves. Without effort, it expands and contracts. In great harmony, electrons scatter and regroup. The forms on the monitor are but ripples on the water. The essence stays invisibly below. Master Yuan-Ma, The Book of Programming
+> Below the surface of the machine, the program moves. Without effort, it expands and contracts. In great harmony, electrons scatter and regroup. The forms on the monitor are but ripples on the water. The essence stays invisibly below. — **Master Yuan-Ma**, *The Book of Programming*
 
 
 Inside the computer’s world, there is only data. You can read data, modify data, create new data—but anything that isn’t data simply does not exist. All this data is stored as long sequences of bits and is thus fundamentally alike.
@@ -11,63 +11,83 @@ Bits are any kind of two-valued things, usually described as zeros and ones. Ins
 
 For example, think about how you might show the number 13 in bits. It works the same way you write decimal numbers, but instead of 10 different digits, you have only 2, and the weight of each increases by a factor of 2 from right to left. Here are the bits that make up the number 13, with the weights of the digits shown below them:
 
+ ```
    0   0   0   0   1   1   0   1
  128  64  32  16   8   4   2   1
-So that’s the binary number 00001101, or 8 + 4 + 1, which equals 13.
+ ```
+ 
+So that’s the binary number $$00001101$$, or $$8 + 4 + 1$$, which equals $$13$$.
 
-Values
+## Values
 
 Imagine a sea of bits. An ocean of them. A typical modern computer has more than 30 billion bits in its volatile data storage. Nonvolatile storage (the hard disk or equivalent) tends to have yet a few orders of magnitude more.
 
-The Ocean of Bits
-To be able to work with such quantities of bits without getting lost, you can separate them into chunks that represent pieces of information. In a JavaScript environment, those chunks are called values. Though all values are made of bits, they play different roles. Every value has a type that determines its role. There are six basic types of values in JavaScript: numbers, strings, Booleans, objects, functions, and undefined values.
+![](http://eloquentjavascript.net/img/bit-sea.png)
 
-To create a value, you must merely invoke its name. This is convenient. You don’t have to gather building material for your values or pay for them. You just call for one, and woosh, you have it. They are not created from thin air, of course. Every value has to be stored somewhere, and if you want to use a gigantic amount of them at the same time, you might run out of bits. Fortunately, this is a problem only if you need them all simultaneously. As soon as you no longer use a value, it will dissipate, leaving behind its bits to be recycled as building material for the next generation of values.
+The Ocean of Bits
+To be able to work with such quantities of bits without getting lost, you can separate them into chunks that represent pieces of information. In a JavaScript environment, those chunks are called *values*. Though all values are made of bits, they play different roles. Every value has a type that determines its role. There are six basic types of values in JavaScript: numbers, strings, Booleans, objects, functions, and undefined values.
+
+To create a value, you must merely invoke its name. This is convenient. You don’t have to gather building material for your values or pay for them. You just call for one, and *woosh*, you have it. They are not created from thin air, of course. Every value has to be stored somewhere, and if you want to use a gigantic amount of them at the same time, you might run out of bits. Fortunately, this is a problem only if you need them all simultaneously. As soon as you no longer use a value, it will dissipate, leaving behind its bits to be recycled as building material for the next generation of values.
 
 This chapter introduces the atomic elements of JavaScript programs, that is, the simple value types and the operators that can act on such values.
 
-Numbers
+## Numbers
 
 Values of the number type are, unsurprisingly, numeric values. In a JavaScript program, they are written as follows:
 
+```
 13
+```
+
 Use that in a program, and it will cause the bit pattern for the number 13 to come into existence inside the computer’s memory.
 
-JavaScript uses a fixed number of bits, namely 64 of them, to store a single number value. There are only so many patterns you can make with 64 bits, which means that the amount of different numbers that can be represented is limited. For N decimal digits, the amount of numbers that can be represented is 10N. Similarly, given 64 binary digits, you can represent 264 different numbers, which is about 18 quintillion (an 18 with 18 zeros after it). This is a lot.
+JavaScript uses a fixed number of bits, namely 64 of them, to store a single number value. There are only so many patterns you can make with 64 bits, which means that the amount of different numbers that can be represented is limited. For *N* decimal digits, the amount of numbers that can be represented is 10<sup>N</sup>. Similarly, given 64 binary digits, you can represent 2<sup>64</sup> different numbers, which is about 18 quintillion (an 18 with 18 zeros after it). This is a lot.
 
-Computer memory used to be a lot smaller, and people tended to use groups of 8 or 16 bits to represent their numbers. It was easy to accidentally overflow such small numbers—to end up with a number that did not fit into the given amount of bits. Today, even personal computers have plenty of memory, so you are free to use 64-bit chunks, which means you need to worry about overflow only when dealing with truly astronomical numbers.
+Computer memory used to be a lot smaller, and people tended to use groups of 8 or 16 bits to represent their numbers. It was easy to accidentally *overflow* such small numbers—to end up with a number that did not fit into the given amount of bits. Today, even personal computers have plenty of memory, so you are free to use 64-bit chunks, which means you need to worry about overflow only when dealing with truly astronomical numbers.
 
 Not all whole numbers below 18 quintillion fit in a JavaScript number, though. Those bits also store negative numbers, so one bit indicates the sign of the number. A bigger issue is that nonwhole numbers must also be represented. To do this, some of the bits are used to store the position of the decimal point. The actual maximum whole number that can be stored is more in the range of 9 quadrillion (15 zeros), which is still pleasantly huge.
 
 Fractional numbers are written by using a dot.
 
+```
 9.81
+```
+
 For very big or very small numbers, you can also use scientific notation by adding an “e” (for “exponent”), followed by the exponent of the number:
 
+```
 2.998e8
-That is 2.998 × 108 = 299,800,000.
+```
 
-Calculations with whole numbers (also called integers) smaller than the aforementioned 9 quadrillion are guaranteed to always be precise. Unfortunately, calculations with fractional numbers are generally not. Just as π (pi) cannot be precisely expressed by a finite number of decimal digits, many numbers lose some precision when only 64 bits are available to store them. This is a shame, but it causes practical problems only in specific situations. The important thing is to be aware of it and treat fractional digital numbers as approximations, not as precise values.
+That is $$2.998 × 108 = 299,800,000$$.
 
-Arithmetic
+Calculations with whole numbers (also called *integers*) smaller than the aforementioned 9 quadrillion are guaranteed to always be precise. Unfortunately, calculations with fractional numbers are generally not. Just as $$π$$ (pi) cannot be precisely expressed by a finite number of decimal digits, many numbers lose some precision when only 64 bits are available to store them. This is a shame, but it causes practical problems only in specific situations. The important thing is to be aware of it and treat fractional digital numbers as approximations, not as precise values.
+
+## Arithmetic
 
 The main thing to do with numbers is arithmetic. Arithmetic operations such as addition or multiplication take two number values and produce a new number from them. Here is what they look like in JavaScript:
 
+```
 100 + 4 * 11
-The + and * symbols are called operators. The first stands for addition, and the second stands for multiplication. Putting an operator between two values will apply it to those values and produce a new value.
+```
+
+The $$+$$ and $$*$$ symbols are called *operators*. The first stands for addition, and the second stands for multiplication. Putting an operator between two values will apply it to those values and produce a new value.
 
 Does the example mean “add 4 and 100, and multiply the result by 11”, or is the multiplication done before the adding? As you might have guessed, the multiplication happens first. But as in mathematics, you can change this by wrapping the addition in parentheses.
 
+```
 (100 + 4) * 11
-For subtraction, there is the - operator, and division can be done with the / operator.
+```
 
-When operators appear together without parentheses, the order in which they are applied is determined by the precedence of the operators. The example shows that multiplication comes before addition. The / operator has the same precedence as *. Likewise for + and -. When multiple operators with the same precedence appear next to each other, as in 1 - 2 + 1, they are applied left to right: (1 - 2) + 1.
+For subtraction, there is the $$-$$ operator, and division can be done with the $$/$$ operator.
+
+When operators appear together without parentheses, the order in which they are applied is determined by the *precedence* of the operators. The example shows that multiplication comes before addition. The $$/$$ operator has the same precedence as $$*$$. Likewise for $$+$$ and $$-$$. When multiple operators with the same precedence appear next to each other, as in $$1 - 2 + 1$$, they are applied left to right: $$(1 - 2) + 1$$.
 
 These rules of precedence are not something you should worry about. When in doubt, just add parentheses.
 
-There is one more arithmetic operator, which you might not immediately recognize. The % symbol is used to represent the remainder operation. X % Y is the remainder of dividing X by Y. For example, 314 % 100 produces 14, and 144 % 12 gives 0. Remainder’s precedence is the same as that of multiplication and division. You’ll often see this operator referred to as modulo, though technically remainder is more accurate.
+There is one more arithmetic operator, which you might not immediately recognize. The % symbol is used to represent the remainder operation. X % Y is the remainder of dividing X by Y. For example, 314 % 100 produces 14, and 144 % 12 gives 0. Remainder’s precedence is the same as that of multiplication and division. You’ll often see this operator referred to as modulo, though technically *remainder* is more accurate.
 
-Special numbers
+## Special numbers
 
 There are three special values in JavaScript that are considered numbers but don’t behave like normal numbers.
 
