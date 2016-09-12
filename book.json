@@ -1,7 +1,8 @@
 {
     "plugins": [
         "codepen",
-        "ace"
+        "ace",
+        "exercises"
     ],
     "pluginsConfig": {}
 }
