@@ -17,7 +17,7 @@ If an expression corresponds to a sentence fragment, a JavaScript *statement* co
 
 The simplest kind of statement is an expression with a semicolon after it. This is a program:
 
-```
+``` javascript
 1;
 !false;
 ```
@@ -30,7 +30,7 @@ In some cases, JavaScript allows you to omit the semicolon at the end of a state
 
   How does a program keep an internal state? How does it remember things? We have seen how to produce new values from old values, but this does not change the old values, and the new value has to be immediately used or it will dissipate again. To catch and hold values, JavaScript provides a thing called a *variable*.
 
-```
+``` javascript
 var caught = 5 * 5;
 ```
 
@@ -40,7 +40,7 @@ The previous statement creates a variable called `caught` and uses it to grab ho
 
 After a variable has been defined, its name can be used as an expression. The value of such an expression is the value the variable currently holds. Here’s an example:
 
-```
+``` javascript
 var ten = 10;
 console.log(ten * ten);
 // → 100
@@ -50,7 +50,7 @@ Variable names can be any word that isn’t a reserved word (such as `var`). The
 
 When a variable points at a value, that does not mean it is tied to that value forever. The = operator can be used at any time on existing variables to disconnect them from their current value and have them point to a new one.
 
-```
+``` javascript
 var mood = "light";
 console.log(mood);
 // → light
@@ -66,7 +66,7 @@ You should imagine variables as tentacles, rather than boxes. They do not *conta
 Variables as tentacles
 Let’s look at an example. To remember the number of dollars that Luigi still owes you, you create a variable. And then when he pays back $35, you give this variable a new value.
 
-```
+``` javascript
 var luigisDebt = 140;
 luigisDebt = luigisDebt - 35;
 console.log(luigisDebt);
@@ -77,7 +77,7 @@ When you define a variable without giving it a value, the tentacle has nothing t
 
 A single `var` statement may define multiple variables. The definitions must be separated by commas.
 
-```
+``` javascript
 var one = 1, two = 2;
 console.log(one + two);
 // → 3
@@ -106,7 +106,7 @@ The collection of variables and their values that exist at a given time is calle
 
 A lot of the values provided in the default environment have the type *function*. A function is a piece of program wrapped in a value. Such values can be *applied* in order to run the wrapped program. For example, in a browser environment, the variable `alert` holds a function that shows a little dialog box with a message. It is used like this:
 
-```
+``` javascript
 alert("Good morning!");
 ```
 ![An alert dialog](http://eloquentjavascript.net/img/alert.png)
@@ -119,7 +119,7 @@ Executing a function is called *invoking*, *calling*, or *applying* it. You can 
 
 When running the examples, or your own code, on the pages of this book, `console.log` output will be shown after the example, instead of in the browser’s JavaScript console.
 
-```
+``` javascript
 var x = 30;
 console.log("the value of x is", x);
 // → the value of x is 30
@@ -129,13 +129,16 @@ Though variable names cannot contain period characters, `console.log` clearly ha
 
 ### Return values
 
-Showing a dialog box or writing text to the screen is a *side effect*. A lot of functions are useful because of the side effects they produce. Functions may also produce values, and in that case, they don’t need to have a side effect to be useful. For example, the function Math.max takes any number of number values and gives back the greatest.
+Showing a dialog box or writing text to the screen is a *side effect*. A lot of functions are useful because of the side effects they produce. Functions may also produce values, and in that case, they don’t need to have a side effect to be useful. For example, the function `Math.max` takes any number of number values and gives back the greatest.
 
+``` javascript
 console.log(Math.max(2, 4));
 // → 4
+```
+
 When a function produces a value, it is said to return that value. Anything that produces a value is an expression in JavaScript, which means function calls can be used within larger expressions. Here a call to Math.min, which is the opposite of `Math.max`, is used as an input to the plus operator:
 
-```
+``` javascript
 console.log(Math.min(2, 4) + 100);
 // → 102
 ```
@@ -146,14 +149,14 @@ The next chapter explains how to write your own functions.
 
 Browser environments contain other functions besides `alert` for popping up windows. You can ask the user an OK/Cancel question using `confirm`. This returns a Boolean: `true` if the user clicks OK and `false` if the user clicks Cancel.
 
-```
+``` javascript
 confirm("Shall we, then?");
 ```
 ![A confirm dialog](http://eloquentjavascript.net/img/confirm.png)
 
 The prompt function can be used to ask an “open” question. The first argument is the question, the second one is the text that the user starts with. A line of text can be typed into the dialog window, and the function will return this text as a string.
 
-```
+``` javascript
 prompt("Tell me everything you know.", "...");
 ```
 ![An prompt dialog](http://eloquentjavascript.net/img/prompt.png)
@@ -164,7 +167,7 @@ These two functions aren’t used much in modern web programming, mostly because
 
 When your program contains more than one statement, the statements are executed, predictably, from top to bottom. As a basic example, this program has two statements. The first one asks the user for a number, and the second, which is executed afterward, shows the square of that number.
 
-```
+``` javascript
 var theNumber = Number(prompt("Pick a number", ""));
 alert("Your number is the square root of " +
       theNumber * theNumber);
@@ -184,7 +187,7 @@ Executing statements in straight-line order isn’t the only option we have. An 
 
 Conditional execution is written with the `if` keyword in JavaScript. In the simple case, we just want some code to be executed if, and only if, a certain condition holds. For example, in the previous program, we might want to show the square of the input only if the input is actually a number.
 
-```
+``` javascript
 var theNumber = Number(prompt("Pick a number", ""));
 if (!isNaN(theNumber))
   alert("Your number is the square root of " +
@@ -199,7 +202,7 @@ The `isNaN` function is a standard JavaScript function that returns `true` only 
 
 You often won’t just have code that executes when a condition holds true, but also code that handles the other case. This alternate path is represented by the second arrow in the diagram. The `else` keyword can be used, together with if, to create two separate, alternative execution paths.
 
-```
+``` javascript
 var theNumber = Number(prompt("Pick a number", ""));
 if (!isNaN(theNumber))
   alert("Your number is the square root of " +
@@ -210,7 +213,7 @@ else
 
 If we have more than two paths to choose from, multiple `if/else` pairs can be “chained” together. Here’s an example:
 
-```
+``` javascript
 var num = Number(prompt("Pick a number", "0"));
 
 if (num < 10)
@@ -231,7 +234,7 @@ The flow chart for this program looks something like this:
 
 Consider a program that prints all even numbers from $$0$$ to $$12$$. One way to write this is as follows:
 
-```
+``` javascript
 console.log(0);
 console.log(2);
 console.log(4);
@@ -247,7 +250,7 @@ That works, but the idea of writing a program is to make something less work, no
 
 Looping control flow allows us to go back to some point in the program where we were before and repeat it with our current program state. If we combine this with a variable that counts, we can do something like this:
 
-```
+``` javascript
 var number = 0;
 while (number <= 12) {
   console.log(number);
@@ -268,7 +271,7 @@ The variable number demonstrates the way a variable can track the progress of a 
 
 As an example that actually does something useful, we can now write a program that calculates and shows the value of $$2$$<sup>10</sup> ($$2$$ to the $$10th$$ power). We use two variables: one to keep track of our result and one to count how often we have multiplied this result by $$2$$. The loop tests whether the second variable has reached 10 yet and then updates both variables.
 
-```
+``` javascript
 var result = 1;
 var counter = 0;
 while (counter < 10) {
@@ -283,7 +286,7 @@ The counter could also start at $$1$$ and check for $$<= 10$$, but, for reasons 
 
 The `do` loop is a control structure similar to the `while` loop. It differs only on one point: a `do` loop always executes its body at least once, and it starts testing whether it should stop only after that first execution. To reflect this, the test appears after the body of the loop:
 
-```
+``` javascript
 do {
   var yourName = prompt("Who are you?");
 } while (!yourName);
@@ -302,7 +305,7 @@ Many loops follow the pattern seen in the previous while examples. First, a “c
 
 Because this pattern is so common, JavaScript and similar languages provide a slightly shorter and more comprehensive form, the `for` loop.
 
-```
+``` javascript
 for (var number = 0; number <= 12; number = number + 2)
   console.log(number);
 // → 0
