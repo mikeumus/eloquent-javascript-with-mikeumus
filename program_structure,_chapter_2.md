@@ -229,8 +229,9 @@ The flow chart for this program looks something like this:
 
 ### while and do loops
 
-Consider a program that prints all even numbers from 0 to 12. One way to write this is as follows:
+Consider a program that prints all even numbers from $$0$$ to $$12$$. One way to write this is as follows:
 
+```
 console.log(0);
 console.log(2);
 console.log(4);
@@ -238,11 +239,15 @@ console.log(6);
 console.log(8);
 console.log(10);
 console.log(12);
-That works, but the idea of writing a program is to make something less work, not more. If we needed all even numbers less than 1,000, the previous would be unworkable. What we need is a way to repeat some code. This form of control flow is called a loop:
+```
 
-Loop control flow
+That works, but the idea of writing a program is to make something less work, not more. If we needed all even numbers less than 1,000, the previous would be unworkable. What we need is a way to repeat some code. This form of control flow is called a *loop*:
+
+![Loop control flow](http://eloquentjavascript.net/img/controlflow-loop.svg)
+
 Looping control flow allows us to go back to some point in the program where we were before and repeat it with our current program state. If we combine this with a variable that counts, we can do something like this:
 
+```
 var number = 0;
 while (number <= 12) {
   console.log(number);
@@ -251,16 +256,19 @@ while (number <= 12) {
 // → 0
 // → 2
 //   … etcetera
-A statement starting with the keyword while creates a loop. The word while is followed by an expression in parentheses and then a statement, much like if. The loop executes that statement as long as the expression produces a value that is true when converted to Boolean type.
+```
 
-In this loop, we want to both print the current number and add two to our variable. Whenever we need to execute multiple statements inside a loop, we wrap them in curly braces ({ and }). Braces do for statements what parentheses do for expressions: they group them together, making them count as a single statement. A sequence of statements wrapped in braces is called a block.
+A statement starting with the keyword `while` creates a loop. The word `while` is followed by an expression in parentheses and then a statement, much like `if`. The loop executes that statement as long as the expression produces a value that is `true` when converted to Boolean type.
 
-Many JavaScript programmers wrap every single loop or if body in braces. They do this both for the sake of consistency and to avoid having to add or remove braces when changing the number of statements in the body later. In this book, I will write most single-statement bodies without braces, since I value brevity. You are free to go with whichever style you prefer.
+In this loop, we want to both print the current number and add two to our variable. Whenever we need to execute multiple statements inside a loop, we wrap them in curly braces ({ and }). Braces do for statements what parentheses do for expressions: they group them together, making them count as a single statement. A sequence of statements wrapped in braces is called a *block*.
 
-The variable number demonstrates the way a variable can track the progress of a program. Every time the loop repeats, number is incremented by 2. Then, at the beginning of every repetition, it is compared with the number 12 to decide whether the program has done all the work it intended to do.
+Many JavaScript programmers wrap every single loop or `if` body in braces. They do this both for the sake of consistency and to avoid having to add or remove braces when changing the number of statements in the body later. In this book, I will write most single-statement bodies without braces, since I value brevity. You are free to go with whichever style you prefer.
 
-As an example that actually does something useful, we can now write a program that calculates and shows the value of 210 (2 to the 10th power). We use two variables: one to keep track of our result and one to count how often we have multiplied this result by 2. The loop tests whether the second variable has reached 10 yet and then updates both variables.
+The variable number demonstrates the way a variable can track the progress of a program. Every time the loop repeats, `number` is incremented by $$2$$. Then, at the beginning of every repetition, it is compared with the number $$12$$ to decide whether the program has done all the work it intended to do.
 
+As an example that actually does something useful, we can now write a program that calculates and shows the value of $$2$$<sup>10</sup> ($$2$$ to the $$10th$$ power). We use two variables: one to keep track of our result and one to count how often we have multiplied this result by $$2$$. The loop tests whether the second variable has reached 10 yet and then updates both variables.
+
+```
 var result = 1;
 var counter = 0;
 while (counter < 10) {
@@ -269,9 +277,11 @@ while (counter < 10) {
 }
 console.log(result);
 // → 1024
-The counter could also start at 1 and check for <= 10, but, for reasons that will become apparent in Chapter 4, it is a good idea to get used to counting from 0.
+```
 
-The do loop is a control structure similar to the while loop. It differs only on one point: a do loop always executes its body at least once, and it starts testing whether it should stop only after that first execution. To reflect this, the test appears after the body of the loop:
+The counter could also start at $$1$$ and check for $$<= 10$$, but, for reasons that will become apparent in Chapter 4, it is a good idea to get used to counting from 0.
+
+The `do` loop is a control structure similar to the `while` loop. It differs only on one point: a do loop always executes its body at least once, and it starts testing whether it should stop only after that first execution. To reflect this, the test appears after the body of the loop:
 
 do {
   var yourName = prompt("Who are you?");
