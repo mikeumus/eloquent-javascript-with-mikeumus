@@ -35,7 +35,7 @@ This chapter introduces the atomic elements of JavaScript programs, that is, the
 
 Values of the number type are, unsurprisingly, numeric values. In a JavaScript program, they are written as follows:
 
-```
+```  javascript
 13
 ```
 
@@ -49,13 +49,13 @@ Not all whole numbers below 18 quintillion fit in a JavaScript number, though. T
 
 Fractional numbers are written by using a dot.
 
-```
+``` javascript
 9.81
 ```
 
 For very big or very small numbers, you can also use scientific notation by adding an “e” (for “exponent”), followed by the exponent of the number:
 
-```
+``` javascript
 2.998e8
 ```
 
@@ -67,7 +67,7 @@ Calculations with whole numbers (also called *integers*) smaller than the aforem
 
 The main thing to do with numbers is arithmetic. Arithmetic operations such as addition or multiplication take two number values and produce a new number from them. Here is what they look like in JavaScript:
 
-```
+``` javascript
 100 + 4 * 11
 ```
 
@@ -75,7 +75,7 @@ The $$+$$ and $$*$$ symbols are called *operators*. The first stands for additio
 
 Does the example mean “add 4 and 100, and multiply the result by 11”, or is the multiplication done before the adding? As you might have guessed, the multiplication happens first. But as in mathematics, you can change this by wrapping the addition in parentheses.
 
-```
+``` javascript
 (100 + 4) * 11
 ```
 
@@ -99,7 +99,7 @@ NaN stands for “not a number”, even though it is a value of the number type.
 
 The next basic data type is the *string*. Strings are used to represent text. They are written by enclosing their content in quotes.
 
-```
+``` javascript
 "Patch my boat with chewing gum"
 'Monkeys wave goodbye'
 ```
@@ -110,26 +110,26 @@ Almost anything can be put between quotes, and JavaScript will make a string val
 
 To make it possible to include such characters in a string, the following notation is used: whenever a backslash (\) is found inside quoted text, it indicates that the character after it has a special meaning. This is called *escaping* the character. A quote that is preceded by a backslash will not end the string but be part of it. When an `n` character occurs after a backslash, it is interpreted as a newline. Similarly, a `t` after a backslash means a tab character. Take the following string:
 
-```
+``` javascript
 "This is the first line\nAnd this is the second"
 ```
 
 The actual text contained is this:
 
-```
+``` javascript
 This is the first line
 And this is the second
 ```
 
 There are, of course, situations where you want a backslash in a string to be just a backslash, not a special code. If two backslashes follow each other, they will collapse together, and only one will be left in the resulting string value. This is how the string “A `newline character is written like "\n"`.” can be expressed:
 
-```
+``` javascript
 "A newline character is written like \"\\n\"."
 ```
 
 Strings cannot be divided, multiplied, or subtracted, but the + operator can be used on them. It does not add, but it *concatenates*—it glues two strings together. The following line will produce the string "concatenate":
 
-```
+``` javascript
 "con" + "cat" + "e" + "nate"
 ```
 
@@ -139,7 +139,7 @@ There are more ways of manipulating strings, which we will discuss when we get t
 
 Not all operators are symbols. Some are written as words. One example is the `typeof` operator, which produces a string value naming the type of the value you give it.
 
-```
+``` javascript
 console.log(typeof 4.5)
 // → number
 console.log(typeof "x")
@@ -150,7 +150,7 @@ We will use `console.log` in example code to indicate that we want to see the re
 
 The other operators we saw all operated on two values, but `typeof` takes only one. Operators that use two values are called *binary* operators, while those that take one are called `unary` operators. The minus operator can be used both as a binary operator and as a unary operator.
 
-```
+``` javascript
 console.log(- (10 - 2))
 // → -8
 ```
@@ -163,7 +163,7 @@ Often, you will need a value that simply distinguishes between two possibilities
 
 Here is one way to produce Boolean values:
 
-```
+``` javascript
 console.log(3 > 2)
 // → true
 console.log(3 < 2)
@@ -174,7 +174,7 @@ The > and < signs are the traditional symbols for “is greater than” and “i
 
 Strings can be compared in the same way.
 
-```
+``` javascript
 console.log("Aardvark" < "Zoroaster")
 // → true
 ```
@@ -183,14 +183,14 @@ The way strings are ordered is more or less alphabetic: uppercase letters are al
 
 Other similar operators are >= (greater than or equal to), <= (less than or equal to), == (equal to), and != (not equal to).
 
-```
+``` javascript
 console.log("Itchy" != "Scratchy")
 // → true
 ```
 
 There is only one value in JavaScript that is not equal to itself, and that is NaN, which stands for “not a number”.
 
-```
+``` javascript
 console.log(NaN == NaN)
 // → false
 ```
@@ -203,7 +203,7 @@ There are also some operations that can be applied to Boolean values themselves.
 
 The && operator represents logical *and*. It is a binary operator, and its result is true only if both the values given to it are true.
 
-```
+``` javascript
 console.log(true && false)
 // → false
 console.log(true && true)
@@ -212,7 +212,7 @@ console.log(true && true)
 
 The || operator denotes logical *or*. It produces true if either of the values given to it is true.
 
-```
+``` javascript
 console.log(false || true)
 // → true
 console.log(false || false)
@@ -223,13 +223,13 @@ console.log(false || false)
 
 When mixing these Boolean operators with arithmetic and other operators, it is not always obvious when parentheses are needed. In practice, you can usually get by with knowing that of the operators we have seen so far, || has the lowest precedence, then comes &&, then the comparison operators (>, ==, and so on), and then the rest. This order has been chosen such that, in typical expressions like the following one, as few parentheses as possible are necessary:
 
-```
+``` javascript
 1 + 1 == 2 && 10 * 10 > 50
 ```
 
 The last logical operator I will discuss is not unary, not binary, but *ternary*, operating on three values. It is written with a question mark and a colon, like this:
 
-```
+``` javascript
 console.log(true ? 1 : 2);
 // → 1
 console.log(false ? 1 : 2);
@@ -250,7 +250,7 @@ The difference in meaning between `undefined` and `null` is an accident of JavaS
 
 In the introduction, I mentioned that JavaScript goes out of its way to accept almost any program you give it, even programs that do odd things. This is nicely demonstrated by the following expressions:
 
-```
+``` javascript
 console.log(8 * null)
 // → 0
 console.log("5" - 1)
@@ -269,7 +269,7 @@ When something that doesn’t map to a number in an obvious way (such as "$$five
 
 When comparing values of the same type using ==, the outcome is easy to predict: you should get true when both values are the same, except in the case of NaN. But when the types differ, JavaScript uses a complicated and confusing set of rules to determine what to do. In most cases, it just tries to convert one of the values to the other value’s type. However, when `null` or `undefined` occurs on either side of the operator, it produces true only if both sides are one of `null` or `undefined`.
 
-```
+``` javascript
 console.log(null == undefined);
 // → true
 console.log(null == 0);
@@ -288,7 +288,7 @@ The logical operators && and || handle values of different types in a peculiar w
 
 The || operator, for example, will return the value to its left when that can be converted to true and will return the value on its right otherwise. This conversion works as you’d expect for Boolean values and should do something analogous for values of other types.
 
-```
+``` javascript
 console.log(null || "user")
 // → user
 console.log("Karl" || "user")
