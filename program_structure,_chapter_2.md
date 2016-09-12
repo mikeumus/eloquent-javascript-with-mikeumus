@@ -281,90 +281,115 @@ console.log(result);
 
 The counter could also start at $$1$$ and check for $$<= 10$$, but, for reasons that will become apparent in Chapter 4, it is a good idea to get used to counting from 0.
 
-The `do` loop is a control structure similar to the `while` loop. It differs only on one point: a do loop always executes its body at least once, and it starts testing whether it should stop only after that first execution. To reflect this, the test appears after the body of the loop:
+The `do` loop is a control structure similar to the `while` loop. It differs only on one point: a `do` loop always executes its body at least once, and it starts testing whether it should stop only after that first execution. To reflect this, the test appears after the body of the loop:
 
+```
 do {
   var yourName = prompt("Who are you?");
 } while (!yourName);
 console.log(yourName);
-This program will force you to enter a name. It will ask again and again until it gets something that is not an empty string. Applying the ! operator will convert a value to Boolean type before negating it, and all strings except "" convert to true. This means the loop continues going round until you provide a name that is not the empty string.
+```
 
-Indenting Code
+This program will force you to enter a name. It will ask again and again until it gets something that is not an empty string. Applying the ! operator will convert a value to Boolean type before negating it, and all strings except "" convert to `true`. This means the loop continues going round until you provide a name that is not the empty string.
+
+## Indenting Code
 
 You’ve probably noticed the spaces I put in front of some statements. In JavaScript, these are not required—the computer will accept the program just fine without them. In fact, even the line breaks in programs are optional. You could write a program as a single long line if you felt like it. The role of the indentation inside blocks is to make the structure of the code stand out. In complex code, where new blocks are opened inside other blocks, it can become hard to see where one block ends and another begins. With proper indentation, the visual shape of a program corresponds to the shape of the blocks inside it. I like to use two spaces for every open block, but tastes differ—some people use four spaces, and some people use tab characters.
 
-for loops
+## for loops
 
 Many loops follow the pattern seen in the previous while examples. First, a “counter” variable is created to track the progress of the loop. Then comes a while loop, whose test expression usually checks whether the counter has reached some boundary yet. At the end of the loop body, the counter is updated to track progress.
 
-Because this pattern is so common, JavaScript and similar languages provide a slightly shorter and more comprehensive form, the for loop.
+Because this pattern is so common, JavaScript and similar languages provide a slightly shorter and more comprehensive form, the `for` loop.
 
+```
 for (var number = 0; number <= 12; number = number + 2)
   console.log(number);
 // → 0
 // → 2
 //   … etcetera
+```
+
 This program is exactly equivalent to the earlier even-number-printing example. The only change is that all the statements that are related to the “state” of the loop are now grouped together.
 
-The parentheses after a for keyword must contain two semicolons. The part before the first semicolon initializes the loop, usually by defining a variable. The second part is the expression that checks whether the loop must continue. The final part updates the state of the loop after every iteration. In most cases, this is shorter and clearer than a while construct.
+The parentheses after a `for` keyword must contain two semicolons. The part before the first semicolon *initializes* the loop, usually by defining a variable. The second part is the expression that *checks* whether the loop must continue. The final part *updates* the state of the loop after every iteration. In most cases, this is shorter and clearer than a while construct.
 
-Here is the code that computes 210, using for instead of while:
+Here is the code that computes $$2$$<sup>10</sup>, using `for` instead of `while`:
 
+```
 var result = 1;
 for (var counter = 0; counter < 10; counter = counter + 1)
   result = result * 2;
 console.log(result);
 // → 1024
+```
+
 Note that even though no block is opened with a {, the statement in the loop is still indented two spaces to make it clear that it “belongs” to the line before it.
 
-Breaking Out of a Loop
+## Breaking Out of a Loop
 
-Having the loop’s condition produce false is not the only way a loop can finish. There is a special statement called break that has the effect of immediately jumping out of the enclosing loop.
+Having the loop’s condition produce `false` is not the only way a loop can finish. There is a special statement called `break` that has the effect of immediately jumping out of the enclosing loop.
 
-This program illustrates the break statement. It finds the first number that is both greater than or equal to 20 and divisible by 7.
+This program illustrates the `break` statement. It finds the first number that is both greater than or equal to 20 and divisible by $$7$$.
 
+```
 for (var current = 20; ; current++) {
   if (current % 7 == 0)
     break;
 }
 console.log(current);
 // → 21
+```
+
 Using the remainder (%) operator is an easy way to test whether a number is divisible by another number. If it is, the remainder of their division is zero.
 
-The for construct in the example does not have a part that checks for the end of the loop. This means that the loop will never stop unless the break statement inside is executed.
+The `for` construct in the example does not have a part that checks for the end of the loop. This means that the loop will never stop unless the `break` statement inside is executed.
 
-If you were to leave out that break statement or accidentally write a condition that always produces true, your program would get stuck in an infinite loop. A program stuck in an infinite loop will never finish running, which is usually a bad thing.
+If you were to leave out that `break` statement or accidentally write a condition that always produces `true`, your program would get stuck in an *infinite loop*. A program stuck in an infinite loop will never finish running, which is usually a bad thing.
 
 If you create an infinite loop in one of the examples on these pages, you’ll usually be asked whether you want to stop the script after a few seconds. If that fails, you will have to close the tab that you’re working in, or on some browsers close your whole browser, in order to recover.
 
-The continue keyword is similar to break, in that it influences the progress of a loop. When continue is encountered in a loop body, control jumps out of the body and continues with the loop’s next iteration.
+The `continue` keyword is similar to `break`, in that it influences the progress of a loop. When `continue` is encountered in a loop body, control jumps out of the body and continues with the loop’s next iteration.
 
-Updating variables succinctly
+### Updating variables succinctly
 
 Especially when looping, a program often needs to “update” a variable to hold a value based on that variable’s previous value.
 
+```
 counter = counter + 1;
+```
+
 JavaScript provides a shortcut for this:
 
+```
 counter += 1;
-Similar shortcuts work for many other operators, such as result *= 2 to double result or counter -= 1 to count downward.
+```
+
+Similar shortcuts work for many other operators, such as `result *= 2` to double `result` or `counter -= 1` to count downward.
 
 This allows us to shorten our counting example a little more.
 
+```
 for (var number = 0; number <= 12; number += 2)
   console.log(number);
-For counter += 1 and counter -= 1, there are even shorter equivalents: counter++ and counter--.
+```
 
-Dispatching on a value with switch
+For `counter += 1` and `counter -= 1`, there are even shorter equivalents: `counter++` and `counter--`.
+
+### Dispatching on a value with switch
 
 It is common for code to look like this:
 
+```
 if (variable == "value1") action1();
 else if (variable == "value2") action2();
 else if (variable == "value3") action3();
 else defaultAction();
-There is a construct called switch that is intended to solve such a “dispatch” in a more direct way. Unfortunately, the syntax JavaScript uses for this (which it inherited from the C/Java line of programming languages) is somewhat awkward—a chain of if statements often looks better. Here is an example:
+```
 
+There is a construct called `switch` that is intended to solve such a “dispatch” in a more direct way. Unfortunately, the syntax JavaScript uses for this (which it inherited from the C/Java line of programming languages) is somewhat awkward—a chain of if statements often looks better. Here is an example:
+
+```
 switch (prompt("What is the weather like?")) {
   case "rainy":
     console.log("Remember to bring an umbrella.");
@@ -378,26 +403,32 @@ switch (prompt("What is the weather like?")) {
     console.log("Unknown weather type!");
     break;
 }
-You may put any number of case labels inside the block opened by switch. The program will jump to the label that corresponds to the value that switch was given or to default if no matching value is found. It starts executing statements there, even if they’re under another label, until it reaches a break statement. In some cases, such as the "sunny" case in the example, this can be used to share some code between cases (it recommends going outside for both sunny and cloudy weather). But beware: it is easy to forget such a break, which will cause the program to execute code you do not want executed.
+```
 
-Capitalization
+You may put any number of `case` labels inside the block opened by `switch`. The program will jump to the label that corresponds to the value that `switch` was given or to `default` if no matching value is found. It starts executing statements there, even if they’re under another label, until it reaches a `break` statement. In some cases, such as the "sunny" case in the example, this can be used to share some code between cases (it recommends going outside for both sunny and cloudy weather). But beware: it is easy to forget such a `break`, which will cause the program to execute code you do not want executed.
+
+## Capitalization
 
 Variable names may not contain spaces, yet it is often helpful to use multiple words to clearly describe what the variable represents. These are pretty much your choices for writing a variable name with several words in it:
 
+```
 fuzzylittleturtle
 fuzzy_little_turtle
 FuzzyLittleTurtle
 fuzzyLittleTurtle
+```
+
 The first style can be hard to read. Personally, I like the look of the underscores, though that style is a little painful to type. The standard JavaScript functions, and most JavaScript programmers, follow the bottom style—they capitalize every word except the first. It is not hard to get used to little things like that, and code with mixed naming styles can be jarring to read, so we will just follow this convention.
 
-In a few cases, such as the Number function, the first letter of a variable is also capitalized. This was done to mark this function as a constructor. What a constructor is will become clear in Chapter 6. For now, the important thing is not to be bothered by this apparent lack of consistency.
+In a few cases, such as the `Number` function, the first letter of a variable is also capitalized. This was done to mark this function as a constructor. What a constructor is will become clear in Chapter 6. For now, the important thing is not to be bothered by this apparent lack of consistency.
 
-Comments
+## Comments
 
-Often, raw code does not convey all the information you want a program to convey to human readers, or it conveys it in such a cryptic way that people might not understand it. At other times, you might just feel poetic or want to include some thoughts as part of your program. This is what comments are for.
+Often, raw code does not convey all the information you want a program to convey to human readers, or it conveys it in such a cryptic way that people might not understand it. At other times, you might just feel poetic or want to include some thoughts as part of your program. This is what *comments* are for.
 
 A comment is a piece of text that is part of a program but is completely ignored by the computer. JavaScript has two ways of writing comments. To write a single-line comment, you can use two slash characters (//) and then the comment text after it.
 
+```
 var accountBalance = calculateBalance(account);
 // It's a green hollow where a river sings
 accountBalance.adjust();
@@ -406,8 +437,11 @@ var report = new Report();
 // Where the sun on the proud mountain rings:
 addToReport(accountBalance, report);
 // It's a little valley, foaming like light in a glass.
+```
+
 A // comment goes only to the end of the line. A section of text between /* and */ will be ignored, regardless of whether it contains line breaks. This is often useful for adding blocks of information about a file or a chunk of program.
 
+```
 /*
  I first found this number scrawled on the back of one of
  my notebooks a few years ago. Since then, it has often
@@ -416,15 +450,17 @@ A // comment goes only to the end of the line. A section of text between /* and 
  me, so I've decided to keep it.
 */
 var myNumber = 11213;
-Summary
+```
+
+## Summary
 
 You now know that a program is built out of statements, which themselves sometimes contain more statements. Statements tend to contain expressions, which themselves can be built out of smaller expressions.
 
-Putting statements after one another gives you a program that is executed from top to bottom. You can introduce disturbances in the flow of control by using conditional (if, else, and switch) and looping (while, do, and for) statements.
+Putting statements after one another gives you a program that is executed from top to bottom. You can introduce disturbances in the flow of control by using conditional (`if`, `else`, and `switch`) and looping (`while`, `do`, and `for`) statements.
 
 Variables can be used to file pieces of data under a name, and they are useful for tracking state in your program. The environment is the set of variables that are defined. JavaScript systems always put a number of useful standard variables into your environment.
 
-Functions are special values that encapsulate a piece of program. You can invoke them by writing functionName(argument1, argument2). Such a function call is an expression, and may produce a value.
+Functions are special values that encapsulate a piece of program. You can invoke them by writing `functionName(argument1, argument2)`. Such a function call is an expression, and may produce a value.
 
 ## Exercises
 
@@ -446,7 +482,7 @@ Write a loop that makes seven calls to `console.log` to output the following tri
 #######
 ```
 
-It may be useful to know that you can find the length of a string by writing .length after it.
+It may be useful to know that you can find the length of a string by writing `.length` after it.
 
 ```
 var abc = "abc";
@@ -460,9 +496,9 @@ Most exercises contain a piece of code that you can modify to solve the exercise
 
 ### FizzBuzz
 
-Write a program that uses console.log to print all the numbers from 1 to 100, with two exceptions. For numbers divisible by 3, print "Fizz" instead of the number, and for numbers divisible by 5 (and not 3), print "Buzz" instead.
+Write a program that uses `console.log` to print all the numbers from $$1$$ to $$100$$, with two exceptions. For numbers divisible by $$3$$, print "`Fizz`" instead of the number, and for numbers divisible by $$5$$ (and not $$3$$), print "`Buzz`" instead.
 
-When you have that working, modify your program to print "FizzBuzz", for numbers that are divisible by both 3 and 5 (and still print "Fizz" or "Buzz" for numbers divisible by only one of those).
+When you have that working, modify your program to print "`FizzBuzz`", for numbers that are divisible by both $$3$$ and $$5$$ (and still print "`Fizz`" or "`Buzz`" for numbers divisible by only one of those).
 
 (This is actually an interview question that has been claimed to weed out a significant percentage of programmer candidates. So if you solved it, you’re now allowed to feel good about yourself.)
 
@@ -470,11 +506,11 @@ When you have that working, modify your program to print "FizzBuzz", for numbers
 // Your code here.
 ```
 
-###Chess board
+### Chess board
 
-Write a program that creates a string that represents an 8×8 grid, using newline characters to separate lines. At each position of the grid there is either a space or a “#” character. The characters should form a chess board.
+Write a program that creates a string that represents an $$8×8$$ grid, using newline characters to separate lines. At each position of the grid there is either a space or a “#” character. The characters should form a chess board.
 
-Passing this string to console.log should show something like this:
+Passing this string to `console.log` should show something like this:
 
 ```
  # # # #
@@ -487,6 +523,6 @@ Passing this string to console.log should show something like this:
 # # # #
 ```
 
-When you have a program that generates this pattern, define a variable size = 8 and change the program so that it works for any size, outputting a grid of the given width and height.
+When you have a program that generates this pattern, define a variable `size = 8` and change the program so that it works for any `size`, outputting a grid of the given width and height.
 
 // Your code here.
