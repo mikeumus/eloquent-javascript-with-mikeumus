@@ -1,4 +1,4 @@
-## Introduction
+# Introduction
 
 This is a book about getting computers to do what you want them to do. Computers are about as common as screwdrivers today, but they contain a lot more hidden complexity and thus are harder to operate and understand. To many, they remain alien, slightly threatening things.
 
