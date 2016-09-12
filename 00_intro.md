@@ -104,7 +104,7 @@ At the end of the program, after the `while` construct has finished, the `consol
 
 Finally, here is what the program could look like if we happened to have the convenient operations `range` and `sum` available, which respectively create a collection of numbers within a range and compute the sum of a collection of numbers:
 
-```
+``` javascript
 console.log(sum(range(1, 10)));
 // → 55
 ```
@@ -157,7 +157,7 @@ After that, Chapter 20 describes Node.js, and Chapter 21 builds a simple web sys
 
 In this book, text written in a `monospaced` font will represent elements of programs—sometimes they are self-sufficient fragments, and sometimes they just refer to part of a nearby program. Programs (of which you have already seen a few), are written as follows:
 
-```
+``` javascript
 function fac(n) {
   if (n == 0)
     return 1;
@@ -168,7 +168,7 @@ function fac(n) {
 
 Sometimes, in order to show the output that a program produces, the expected output is written after it, with two slashes and an arrow in front.
 
-```
+``` javascript
 console.log(fac(8));
 // → 40320
 ```
