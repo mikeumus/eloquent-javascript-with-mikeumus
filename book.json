@@ -1,6 +1,5 @@
 {
     "plugins": [
-        "-youtube",
         "codepen",
         "ace"
     ],
