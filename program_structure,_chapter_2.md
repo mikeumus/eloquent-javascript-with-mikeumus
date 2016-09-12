@@ -319,7 +319,7 @@ The parentheses after a `for` keyword must contain two semicolons. The part befo
 
 Here is the code that computes $$2$$<sup>10</sup>, using `for` instead of `while`:
 
-```
+``` javascript
 var result = 1;
 for (var counter = 0; counter < 10; counter = counter + 1)
   result = result * 2;
@@ -335,7 +335,7 @@ Having the loop’s condition produce `false` is not the only way a loop can fin
 
 This program illustrates the `break` statement. It finds the first number that is both greater than or equal to 20 and divisible by $$7$$.
 
-```
+``` javascript
 for (var current = 20; ; current++) {
   if (current % 7 == 0)
     break;
@@ -358,13 +358,13 @@ The `continue` keyword is similar to `break`, in that it influences the progress
 
 Especially when looping, a program often needs to “update” a variable to hold a value based on that variable’s previous value.
 
-```
+``` javascript
 counter = counter + 1;
 ```
 
 JavaScript provides a shortcut for this:
 
-```
+``` javascript
 counter += 1;
 ```
 
@@ -372,7 +372,7 @@ Similar shortcuts work for many other operators, such as `result *= 2` to double
 
 This allows us to shorten our counting example a little more.
 
-```
+``` javascript
 for (var number = 0; number <= 12; number += 2)
   console.log(number);
 ```
@@ -383,7 +383,7 @@ For `counter += 1` and `counter -= 1`, there are even shorter equivalents: `coun
 
 It is common for code to look like this:
 
-```
+``` javascript
 if (variable == "value1") action1();
 else if (variable == "value2") action2();
 else if (variable == "value3") action3();
@@ -392,7 +392,7 @@ else defaultAction();
 
 There is a construct called `switch` that is intended to solve such a “dispatch” in a more direct way. Unfortunately, the syntax JavaScript uses for this (which it inherited from the C/Java line of programming languages) is somewhat awkward—a chain of if statements often looks better. Here is an example:
 
-```
+``` javascript
 switch (prompt("What is the weather like?")) {
   case "rainy":
     console.log("Remember to bring an umbrella.");
@@ -414,7 +414,7 @@ You may put any number of `case` labels inside the block opened by `switch`. The
 
 Variable names may not contain spaces, yet it is often helpful to use multiple words to clearly describe what the variable represents. These are pretty much your choices for writing a variable name with several words in it:
 
-```
+``` javascript
 fuzzylittleturtle
 fuzzy_little_turtle
 FuzzyLittleTurtle
@@ -431,7 +431,7 @@ Often, raw code does not convey all the information you want a program to convey
 
 A comment is a piece of text that is part of a program but is completely ignored by the computer. JavaScript has two ways of writing comments. To write a single-line comment, you can use two slash characters (//) and then the comment text after it.
 
-```
+``` javascript
 var accountBalance = calculateBalance(account);
 // It's a green hollow where a river sings
 accountBalance.adjust();
@@ -444,7 +444,7 @@ addToReport(accountBalance, report);
 
 A // comment goes only to the end of the line. A section of text between /* and */ will be ignored, regardless of whether it contains line breaks. This is often useful for adding blocks of information about a file or a chunk of program.
 
-```
+``` javascript
 /*
  I first found this number scrawled on the back of one of
  my notebooks a few years ago. Since then, it has often
@@ -487,7 +487,7 @@ Write a loop that makes seven calls to `console.log` to output the following tri
 
 It may be useful to know that you can find the length of a string by writing `.length` after it.
 
-```
+``` javascript
 var abc = "abc";
 console.log(abc.length);
 // → 3
@@ -515,7 +515,7 @@ Write a program that creates a string that represents an $$8×8$$ grid, using ne
 
 Passing this string to `console.log` should show something like this:
 
-```
+``` javascript
  # # # #
 # # # #
  # # # #
