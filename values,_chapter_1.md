@@ -11,7 +11,7 @@ Bits are any kind of two-valued things, usually described as zeros and ones. Ins
 
 For example, think about how you might show the number 13 in bits. It works the same way you write decimal numbers, but instead of 10 different digits, you have only 2, and the weight of each increases by a factor of 2 from right to left. Here are the bits that make up the number 13, with the weights of the digits shown below them:
 
- ```
+ ``` javascript
    0   0   0   0   1   1   0   1
  128  64  32  16   8   4   2   1
  ```
