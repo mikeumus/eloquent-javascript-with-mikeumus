@@ -2,7 +2,8 @@
     "plugins": [
         "codepen",
         "ace",
-        "exercises"
+        "exercises",
+        "katex"
     ],
     "pluginsConfig": {}
 }
