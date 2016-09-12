@@ -1,7 +1,7 @@
-#### Chapter 2
-## Program Structure
+### Chapter 2
+# Program Structure
 
-> And my heart glows bright red under my filmy, translucent skin and they have to administer 10cc of JavaScript to get me to come back. (I respond well to toxins in the blood.) Man, that stuff will kick the peaches right out your gills! _why, Why's (Poignant) Guide to Ruby
+> And my heart glows bright red under my filmy, translucent skin and they have to administer 10cc of JavaScript to get me to come back. (I respond well to toxins in the blood.) Man, that stuff will kick the peaches right out your gills! —**_why**, *Why's (Poignant) Guide to Ruby*
 
 In this chapter, we will start to do things that can actually be called *programming*. We will expand our command of the JavaScript language beyond the nouns and sentence fragments we’ve seen so far, to the point where we can express some meaningful prose.
 
