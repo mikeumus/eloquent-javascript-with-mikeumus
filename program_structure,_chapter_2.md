@@ -26,144 +26,191 @@ It is a useless program, though. An expression can be content to just produce a 
 
 In some cases, JavaScript allows you to omit the semicolon at the end of a statement. In other cases, it has to be there, or the next line will be treated as part of the same statement. The rules for when it can be safely omitted are somewhat complex and error-prone. In this book, every statement that needs a semicolon will always be terminated by one. I recommend you do the same in your own programs, at least until you’ve learned more about subtleties involved in leaving out semicolons.
 
-Variables
+## Variables
 
-How does a program keep an internal state? How does it remember things? We have seen how to produce new values from old values, but this does not change the old values, and the new value has to be immediately used or it will dissipate again. To catch and hold values, JavaScript provides a thing called a variable.
+  How does a program keep an internal state? How does it remember things? We have seen how to produce new values from old values, but this does not change the old values, and the new value has to be immediately used or it will dissipate again. To catch and hold values, JavaScript provides a thing called a *variable*.
 
+```
 var caught = 5 * 5;
-And that gives us our second kind of statement. The special word (keyword) var indicates that this sentence is going to define a variable. It is followed by the name of the variable and, if we want to immediately give it a value, by an = operator and an expression.
+```
 
-The previous statement creates a variable called caught and uses it to grab hold of the number that is produced by multiplying 5 by 5.
+And that gives us our second kind of statement. The special word (keyword) `var` indicates that this sentence is going to define a variable. It is followed by the name of the variable and, if we want to immediately give it a value, by an = operator and an expression.
+
+The previous statement creates a variable called `caught` and uses it to grab hold of the number that is produced by multiplying 5 by 5.
 
 After a variable has been defined, its name can be used as an expression. The value of such an expression is the value the variable currently holds. Here’s an example:
 
+```
 var ten = 10;
 console.log(ten * ten);
 // → 100
-Variable names can be any word that isn’t a reserved word (such as var). They may not include spaces. Digits can also be part of variable names—catch22 is a valid name, for example—but the name must not start with a digit. A variable name cannot include punctuation, except for the characters $ and _.
+```
+
+Variable names can be any word that isn’t a reserved word (such as `var`). They may not include spaces. Digits can also be part of variable names—`catch22` is a valid name, for example—but the name must not start with a digit. A variable name cannot include punctuation, except for the characters $ and _.
 
 When a variable points at a value, that does not mean it is tied to that value forever. The = operator can be used at any time on existing variables to disconnect them from their current value and have them point to a new one.
 
+```
 var mood = "light";
 console.log(mood);
 // → light
 mood = "dark";
 console.log(mood);
 // → dark
-You should imagine variables as tentacles, rather than boxes. They do not contain values; they grasp them—two variables can refer to the same value. A program can access only the values that it still has a hold on. When you need to remember something, you grow a tentacle to hold on to it or you reattach one of your existing tentacles to it.
+```
+
+You should imagine variables as tentacles, rather than boxes. They do not *contain* values; they *grasp* them—two variables can refer to the same value. A program can access only the values that it still has a hold on. When you need to remember something, you grow a tentacle to hold on to it or you reattach one of your existing tentacles to it.
+
+![](http://eloquentjavascript.net/img/octopus.jpg)
 
 Variables as tentacles
 Let’s look at an example. To remember the number of dollars that Luigi still owes you, you create a variable. And then when he pays back $35, you give this variable a new value.
 
+```
 var luigisDebt = 140;
 luigisDebt = luigisDebt - 35;
 console.log(luigisDebt);
 // → 105
-When you define a variable without giving it a value, the tentacle has nothing to grasp, so it ends in thin air. If you ask for the value of an empty variable, you’ll get the value undefined.
+```
 
-A single var statement may define multiple variables. The definitions must be separated by commas.
+When you define a variable without giving it a value, the tentacle has nothing to grasp, so it ends in thin air. If you ask for the value of an empty variable, you’ll get the value `undefined`.
 
+A single `var` statement may define multiple variables. The definitions must be separated by commas.
+
+```
 var one = 1, two = 2;
 console.log(one + two);
 // → 3
-Keywords and reserved words
+```
 
-Words with a special meaning, such as var, are keywords, and they may not be used as variable names. There are also a number of words that are “reserved for use” in future versions of JavaScript. These are also officially not allowed to be used as variable names, though some JavaScript environments do allow them. The full list of keywords and reserved words is rather long.
+## Keywords and reserved words
 
+Words with a special meaning, such as `var`, are *keywords*, and they may not be used as variable names. There are also a number of words that are “reserved for use” in future versions of JavaScript. These are also officially not allowed to be used as variable names, though some JavaScript environments do allow them. The full list of keywords and reserved words is rather long.
+
+```
 break case catch class const continue debugger
 default delete do else enum export extends false
 finally for function if implements import in
 instanceof interface let new null package private
 protected public return static super switch this
 throw true try typeof var void while with yield
+```
+
 Don’t worry about memorizing these, but remember that this might be the problem when a variable definition does not work as expected.
 
-The environment
+### The environment
 
-The collection of variables and their values that exist at a given time is called the environment. When a program starts up, this environment is not empty. It always contains variables that are part of the language standard, and most of the time, it has variables that provide ways to interact with the surrounding system. For example, in a browser, there are variables and functions to inspect and influence the currently loaded website and to read mouse and keyboard input.
+The collection of variables and their values that exist at a given time is called the *environment*. When a program starts up, this environment is not empty. It always contains variables that are part of the language standard, and most of the time, it has variables that provide ways to interact with the surrounding system. For example, in a browser, there are variables and functions to inspect and influence the currently loaded website and to read mouse and keyboard input.
 
-Functions
+### Functions
 
-A lot of the values provided in the default environment have the type function. A function is a piece of program wrapped in a value. Such values can be applied in order to run the wrapped program. For example, in a browser environment, the variable alert holds a function that shows a little dialog box with a message. It is used like this:
+A lot of the values provided in the default environment have the type *function*. A function is a piece of program wrapped in a value. Such values can be *applied* in order to run the wrapped program. For example, in a browser environment, the variable `alert` holds a function that shows a little dialog box with a message. It is used like this:
 
+```
 alert("Good morning!");
-An alert dialog
-Executing a function is called invoking, calling, or applying it. You can call a function by putting parentheses after an expression that produces a function value. Usually you’ll directly use the name of the variable that holds the function. The values between the parentheses are given to the program inside the function. In the example, the alert function uses the string that we give it as the text to show in the dialog box. Values given to functions are called arguments. The alert function needs only one of them, but other functions might need a different number or different types of arguments.
+```
+![An alert dialog](http://eloquentjavascript.net/img/alert.png)
 
-The console.log function
+Executing a function is called *invoking*, *calling*, or *applying* it. You can call a function by putting parentheses after an expression that produces a function value. Usually you’ll directly use the name of the variable that holds the function. The values between the parentheses are given to the program inside the function. In the example, the `alert` function uses the string that we give it as the text to show in the dialog box. Values given to functions are called arguments. The `alert` function needs only one of them, but other functions might need a different number or different types of arguments.
 
-The alert function can be useful as an output device when experimenting, but clicking away all those little windows will get on your nerves. In past examples, we’ve used console.log to output values. Most JavaScript systems (including all modern web browsers and Node.js) provide a console.log function that writes out its arguments to some text output device. In browsers, the output lands in the JavaScript console. This part of the browser interface is hidden by default, but most browsers open it when you press F12 or, on Mac, when you press Command-Option-I. If that does not work, search through the menus for an item named “web console” or “developer tools”.
+### The console.log function
 
-When running the examples, or your own code, on the pages of this book, console.log output will be shown after the example, instead of in the browser’s JavaScript console.
+  The `alert` function can be useful as an output device when experimenting, but clicking away all those little windows will get on your nerves. In past examples, we’ve used `console.log` to output values. Most JavaScript systems (including all modern web browsers and Node.js) provide a `console.log` function that writes out its arguments to some text output device. In browsers, the output lands in the JavaScript console. This part of the browser interface is hidden by default, but most browsers open it when you press F12 or, on Mac, when you press Command-Option-I. If that does not work, search through the menus for an item named “web console” or “developer tools”.
 
+When running the examples, or your own code, on the pages of this book, `console.log` output will be shown after the example, instead of in the browser’s JavaScript console.
+
+```
 var x = 30;
 console.log("the value of x is", x);
 // → the value of x is 30
-Though variable names cannot contain period characters, console.log clearly has one. This is because console.log isn’t a simple variable. It is actually an expression that retrieves the log property from the value held by the console variable. We will find out exactly what this means in Chapter 4.
+```
 
-Return values
+Though variable names cannot contain period characters, `console.log` clearly has one. This is because `console.log` isn’t a simple variable. It is actually an expression that retrieves the `log` property from the value held by the `console` variable. We will find out exactly what this means in Chapter 4.
 
-Showing a dialog box or writing text to the screen is a side effect. A lot of functions are useful because of the side effects they produce. Functions may also produce values, and in that case, they don’t need to have a side effect to be useful. For example, the function Math.max takes any number of number values and gives back the greatest.
+### Return values
+
+Showing a dialog box or writing text to the screen is a *side effect*. A lot of functions are useful because of the side effects they produce. Functions may also produce values, and in that case, they don’t need to have a side effect to be useful. For example, the function Math.max takes any number of number values and gives back the greatest.
 
 console.log(Math.max(2, 4));
 // → 4
-When a function produces a value, it is said to return that value. Anything that produces a value is an expression in JavaScript, which means function calls can be used within larger expressions. Here a call to Math.min, which is the opposite of Math.max, is used as an input to the plus operator:
+When a function produces a value, it is said to return that value. Anything that produces a value is an expression in JavaScript, which means function calls can be used within larger expressions. Here a call to Math.min, which is the opposite of `Math.max`, is used as an input to the plus operator:
 
+```
 console.log(Math.min(2, 4) + 100);
 // → 102
+```
+
 The next chapter explains how to write your own functions.
 
-prompt and confirm
+### prompt and confirm
 
-Browser environments contain other functions besides alert for popping up windows. You can ask the user an OK/Cancel question using confirm. This returns a Boolean: true if the user clicks OK and false if the user clicks Cancel.
+Browser environments contain other functions besides `alert` for popping up windows. You can ask the user an OK/Cancel question using `confirm`. This returns a Boolean: `true` if the user clicks OK and `false` if the user clicks Cancel.
 
+```
 confirm("Shall we, then?");
-A confirm dialog
+```
+![A confirm dialog](http://eloquentjavascript.net/img/confirm.png)
+
 The prompt function can be used to ask an “open” question. The first argument is the question, the second one is the text that the user starts with. A line of text can be typed into the dialog window, and the function will return this text as a string.
 
+```
 prompt("Tell me everything you know.", "...");
-An prompt dialog
+```
+![An prompt dialog](http://eloquentjavascript.net/img/prompt.png)
+
 These two functions aren’t used much in modern web programming, mostly because you have no control over the way the resulting windows look, but they are useful for toy programs and experiments.
 
-Control flow
+## Control flow
 
 When your program contains more than one statement, the statements are executed, predictably, from top to bottom. As a basic example, this program has two statements. The first one asks the user for a number, and the second, which is executed afterward, shows the square of that number.
 
+```
 var theNumber = Number(prompt("Pick a number", ""));
 alert("Your number is the square root of " +
       theNumber * theNumber);
-The function Number converts a value to a number. We need that conversion because the result of prompt is a string value, and we want a number. There are similar functions called String and Boolean that convert values to those types.
+```      
+      
+The function `Number` converts a value to a number. We need that conversion because the result of `prompt` is a string value, and we want a number. There are similar functions called `String` and `Boolean` that convert values to those types.
 
 Here is the rather trivial schematic representation of straight control flow:
 
-Trivial control flow
-Conditional execution
+![Trivial control flow](http://eloquentjavascript.net/img/controlflow-straight.svg)
 
-Executing statements in straight-line order isn’t the only option we have. An alternative is conditional execution, where we choose between two different routes based on a Boolean value, like this:
+## Conditional execution
 
-Conditional control flow
-Conditional execution is written with the if keyword in JavaScript. In the simple case, we just want some code to be executed if, and only if, a certain condition holds. For example, in the previous program, we might want to show the square of the input only if the input is actually a number.
+Executing statements in straight-line order isn’t the only option we have. An alternative is *conditional execution*, where we choose between two different routes based on a Boolean value, like this:
 
+![Conditional control flow](http://eloquentjavascript.net/img/controlflow-if.svg)
+
+Conditional execution is written with the `if` keyword in JavaScript. In the simple case, we just want some code to be executed if, and only if, a certain condition holds. For example, in the previous program, we might want to show the square of the input only if the input is actually a number.
+
+```
 var theNumber = Number(prompt("Pick a number", ""));
 if (!isNaN(theNumber))
   alert("Your number is the square root of " +
         theNumber * theNumber);
+```
+
 With this modification, if you enter “cheese”, no output will be shown.
 
-The keyword if executes or skips a statement depending on the value of a Boolean expression. The deciding expression is written after the keyword, between parentheses, followed by the statement to execute.
+The keyword `if` executes or skips a statement depending on the value of a Boolean expression. The deciding expression is written after the keyword, between parentheses, followed by the statement to execute.
 
-The isNaN function is a standard JavaScript function that returns true only if the argument it is given is NaN. The Number function happens to return NaN when you give it a string that doesn’t represent a valid number. Thus, the condition translates to “unless theNumber is not-a-number, do this”.
+The `isNaN` function is a standard JavaScript function that returns `true` only if the argument it is given is NaN. The Number function happens to return NaN when you give it a string that doesn’t represent a valid number. Thus, the condition translates to “unless theNumber is not-a-number, do this”.
 
-You often won’t just have code that executes when a condition holds true, but also code that handles the other case. This alternate path is represented by the second arrow in the diagram. The else keyword can be used, together with if, to create two separate, alternative execution paths.
+You often won’t just have code that executes when a condition holds true, but also code that handles the other case. This alternate path is represented by the second arrow in the diagram. The `else` keyword can be used, together with if, to create two separate, alternative execution paths.
 
+```
 var theNumber = Number(prompt("Pick a number", ""));
 if (!isNaN(theNumber))
   alert("Your number is the square root of " +
         theNumber * theNumber);
 else
   alert("Hey. Why didn't you give me a number?");
-If we have more than two paths to choose from, multiple if/else pairs can be “chained” together. Here’s an example:
+```
 
+If we have more than two paths to choose from, multiple `if/else` pairs can be “chained” together. Here’s an example:
+
+```
 var num = Number(prompt("Pick a number", "0"));
 
 if (num < 10)
@@ -172,12 +219,15 @@ else if (num < 100)
   alert("Medium");
 else
   alert("Large");
-The program will first check whether num is less than 10. If it is, it chooses that branch, shows "Small", and is done. If it isn’t, it takes the else branch, which itself contains a second if. If the second condition (< 100) holds, that means the number is between 10 and 100, and "Medium" is shown. If it doesn’t, the second, and last, else branch is chosen.
+```
+  
+The program will first check whether num is less than 10. If it is, it chooses that branch, shows "Small", and is done. If it isn’t, it takes the `else` branch, which itself contains a second `if`. If the second condition (< 100) holds, that means the number is between 10 and 100, and "Medium" is shown. If it doesn’t, the second, and last, `else` branch is chosen.
 
 The flow chart for this program looks something like this:
 
-Nested if control flow
-while and do loops
+![Nested if control flow](http://eloquentjavascript.net/img/controlflow-nested-if.svg)
+
+### while and do loops
 
 Consider a program that prints all even numbers from 0 to 12. One way to write this is as follows:
 
