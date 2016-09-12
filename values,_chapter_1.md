@@ -9,14 +9,14 @@ Inside the computer’s world, there is only data. You can read data, modify dat
 
 Bits are any kind of two-valued things, usually described as zeros and ones. Inside the computer, they take forms such as a high or low electrical charge, a strong or weak signal, or a shiny or dull spot on the surface of a CD. Any piece of discrete information can be reduced to a sequence of zeros and ones and thus represented in bits.
 
-For example, think about how you might show the number 13 in bits. It works the same way you write decimal numbers, but instead of 10 different digits, you have only 2, and the weight of each increases by a factor of 2 from right to left. Here are the bits that make up the number 13, with the weights of the digits shown below them:
+For example, think about how you might show the number 13 in bits. It works the same way you write decimal numbers, but instead of $$ 10 $$ different digits, you have only $$ 2 $$, and the weight of each increases by a factor of $$ 2 $$ from right to left. Here are the bits that make up the number $$ 13 $$, with the weights of the digits shown below them:
 
  ``` javascript
    0   0   0   0   1   1   0   1
  128  64  32  16   8   4   2   1
  ```
  
-So that’s the binary number $$00001101$$, or $$8 + 4 + 1$$, which equals $$13$$.
+So that’s the binary number $$ 00001101 $$, or $$ 8 + 4 + 1 $$, which equals $$ 13 $$.
 
 ## Values
 
@@ -59,7 +59,7 @@ For very big or very small numbers, you can also use scientific notation by addi
 2.998e8
 ```
 
-That is $$2.998 × 108 = 299,800,000$$.
+That is $$ 2.998 × 108 = 299,800,000 $$.
 
 Calculations with whole numbers (also called *integers*) smaller than the aforementioned 9 quadrillion are guaranteed to always be precise. Unfortunately, calculations with fractional numbers are generally not. Just as $$π$$ (pi) cannot be precisely expressed by a finite number of decimal digits, many numbers lose some precision when only 64 bits are available to store them. This is a shame, but it causes practical problems only in specific situations. The important thing is to be aware of it and treat fractional digital numbers as approximations, not as precise values.
 
@@ -71,7 +71,7 @@ The main thing to do with numbers is arithmetic. Arithmetic operations such as a
 100 + 4 * 11
 ```
 
-The $$+$$ and $$*$$ symbols are called *operators*. The first stands for addition, and the second stands for multiplication. Putting an operator between two values will apply it to those values and produce a new value.
+The $$ + $$ and $$ * $$ symbols are called *operators*. The first stands for addition, and the second stands for multiplication. Putting an operator between two values will apply it to those values and produce a new value.
 
 Does the example mean “add 4 and 100, and multiply the result by 11”, or is the multiplication done before the adding? As you might have guessed, the multiplication happens first. But as in mathematics, you can change this by wrapping the addition in parentheses.
 
@@ -79,13 +79,13 @@ Does the example mean “add 4 and 100, and multiply the result by 11”, or is 
 (100 + 4) * 11
 ```
 
-For subtraction, there is the $$-$$ operator, and division can be done with the $$/$$ operator.
+For subtraction, there is the $$ - $$ operator, and division can be done with the $$ / $$ operator.
 
-When operators appear together without parentheses, the order in which they are applied is determined by the *precedence* of the operators. The example shows that multiplication comes before addition. The $$/$$ operator has the same precedence as $$*$$. Likewise for $$+$$ and $$-$$. When multiple operators with the same precedence appear next to each other, as in $$1 - 2 + 1$$, they are applied left to right: $$(1 - 2) + 1$$.
+When operators appear together without parentheses, the order in which they are applied is determined by the *precedence* of the operators. The example shows that multiplication comes before addition. The $$ / $$ operator has the same precedence as $$ * $$. Likewise for $$ + $$ and $$ - $$. When multiple operators with the same precedence appear next to each other, as in $$ 1 - 2 + 1 $$, they are applied left to right: $$ (1 - 2) + 1 $$.
 
 These rules of precedence are not something you should worry about. When in doubt, just add parentheses.
 
-There is one more arithmetic operator, which you might not immediately recognize. The % symbol is used to represent the remainder operation. $$X$$ % $$Y$$ is the remainder of dividing $$X$$ by $$Y$$. For example, $$314$$ % $$100$$ produces $$14$$, and $$144$$ % $$12$$ gives $$0$$. Remainder’s precedence is the same as that of multiplication and division. You’ll often see this operator referred to as modulo, though technically *remainder* is more accurate.
+There is one more arithmetic operator, which you might not immediately recognize. The % symbol is used to represent the remainder operation. $$ X $$ % $$ Y $$ is the remainder of dividing $$ X $$ by $$ Y $$. For example, $$ 314 $$ % $$ 100 $$ produces $$ 14 $$, and $$ 144 $$ % $$ 12 $$ gives $$ 0 $$. Remainder’s precedence is the same as that of multiplication and division. You’ll often see this operator referred to as modulo, though technically *remainder* is more accurate.
 
 ## Special numbers
 
