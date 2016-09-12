@@ -16,7 +16,7 @@ For example, think about how you might show the number 13 in bits. It works the 
  128  64  32  16   8   4   2   1
  ```
  
-So that’s the binary number $$ 00001101 $$, or $$ 8 + 4 + 1 $$, which equals $$ 13 $$.
+So that’s the binary number $$00001101$$, or $$8 + 4 + 1$$, which equals $$13$$.
 
 ## Values
 
