@@ -9,14 +9,14 @@ Inside the computer’s world, there is only data. You can read data, modify dat
 
 Bits are any kind of two-valued things, usually described as zeros and ones. Inside the computer, they take forms such as a high or low electrical charge, a strong or weak signal, or a shiny or dull spot on the surface of a CD. Any piece of discrete information can be reduced to a sequence of zeros and ones and thus represented in bits.
 
-For example, think about how you might show the number 13 in bits. It works the same way you write decimal numbers, but instead of $$ 10 $$ different digits, you have only $$ 2 $$, and the weight of each increases by a factor of $$ 2 $$ from right to left. Here are the bits that make up the number $$ 13 $$, with the weights of the digits shown below them:
+For example, think about how you might show the number 13 in bits. It works the same way you write decimal numbers, but instead of {% math %} 10 {% endmath %} different digits, you have only {% math %} 2 {% endmath %}, and the weight of each increases by a factor of {% math %} 2 {% endmath %} from right to left. Here are the bits that make up the number {% math %} 13 {% endmath %}, with the weights of the digits shown below them:
 
  ``` javascript
    0   0   0   0   1   1   0   1
  128  64  32  16   8   4   2   1
  ```
  
-So that’s the binary number $$00001101$$, or $$8 + 4 + 1$$, which equals $$13$$.
+So that’s the binary number {% math %}00001101{% endmath %}, or {% math %}8 + 4 + 1{% endmath %}, which equals {% math %}13{% endmath %}.
 
 ## Values
 
@@ -41,7 +41,7 @@ Values of the number type are, unsurprisingly, numeric values. In a JavaScript p
 
 Use that in a program, and it will cause the bit pattern for the number 13 to come into existence inside the computer’s memory.
 
-JavaScript uses a fixed number of bits, namely 64 of them, to store a single number value. There are only so many patterns you can make with 64 bits, which means that the amount of different numbers that can be represented is limited. For *N* decimal digits, the amount of numbers that can be represented is 10<sup>N</sup>. Similarly, given 64 binary digits, you can represent 2<sup>64</sup> different numbers, which is about 18 quintillion (an 18 with 18 zeros after it). This is a lot.
+JavaScript uses a fixed number of bits, namely 64 of them, to store a single number value. There are only so many patterns you can make with 64 bits, which means that the amount of different numbers that can be represented is limited. For *N* decimal digits, the amount of numbers that can be represented is {% math %}10{% endmath %}<sup>{% math %}N{% endmath %}</sup>. Similarly, given 64 binary digits, you can represent {% math %}2{% endmath %}<sup>{% math %}64{% endmath %}</sup> different numbers, which is about {% math %}18 quintillion{% endmath %} (an 18 with 18 zeros after it). This is a lot.
 
 Computer memory used to be a lot smaller, and people tended to use groups of 8 or 16 bits to represent their numbers. It was easy to accidentally *overflow* such small numbers—to end up with a number that did not fit into the given amount of bits. Today, even personal computers have plenty of memory, so you are free to use 64-bit chunks, which means you need to worry about overflow only when dealing with truly astronomical numbers.
 
@@ -59,9 +59,9 @@ For very big or very small numbers, you can also use scientific notation by addi
 2.998e8
 ```
 
-That is $$ 2.998 × 108 = 299,800,000 $$.
+That is {% math %} 2.998 × 108 = 299,800,000 {% endmath %}.
 
-Calculations with whole numbers (also called *integers*) smaller than the aforementioned 9 quadrillion are guaranteed to always be precise. Unfortunately, calculations with fractional numbers are generally not. Just as $$π$$ (pi) cannot be precisely expressed by a finite number of decimal digits, many numbers lose some precision when only 64 bits are available to store them. This is a shame, but it causes practical problems only in specific situations. The important thing is to be aware of it and treat fractional digital numbers as approximations, not as precise values.
+Calculations with whole numbers (also called *integers*) smaller than the aforementioned 9 quadrillion are guaranteed to always be precise. Unfortunately, calculations with fractional numbers are generally not. Just as {% math %}π{% endmath %} (pi) cannot be precisely expressed by a finite number of decimal digits, many numbers lose some precision when only 64 bits are available to store them. This is a shame, but it causes practical problems only in specific situations. The important thing is to be aware of it and treat fractional digital numbers as approximations, not as precise values.
 
 ## Arithmetic
 
@@ -71,7 +71,7 @@ The main thing to do with numbers is arithmetic. Arithmetic operations such as a
 100 + 4 * 11
 ```
 
-The $$ + $$ and $$ * $$ symbols are called *operators*. The first stands for addition, and the second stands for multiplication. Putting an operator between two values will apply it to those values and produce a new value.
+The {% math %} + {% endmath %} and {% math %} \* {% endmath %} symbols are called *operators*. The first stands for addition, and the second stands for multiplication. Putting an operator between two values will apply it to those values and produce a new value.
 
 Does the example mean “add 4 and 100, and multiply the result by 11”, or is the multiplication done before the adding? As you might have guessed, the multiplication happens first. But as in mathematics, you can change this by wrapping the addition in parentheses.
 
@@ -79,21 +79,21 @@ Does the example mean “add 4 and 100, and multiply the result by 11”, or is 
 (100 + 4) * 11
 ```
 
-For subtraction, there is the $$ - $$ operator, and division can be done with the $$ / $$ operator.
+For subtraction, there is the {% math %} - {% endmath %} operator, and division can be done with the {% math %} \/ {% endmath %} operator.
 
-When operators appear together without parentheses, the order in which they are applied is determined by the *precedence* of the operators. The example shows that multiplication comes before addition. The $$ / $$ operator has the same precedence as $$ * $$. Likewise for $$ + $$ and $$ - $$. When multiple operators with the same precedence appear next to each other, as in $$ 1 - 2 + 1 $$, they are applied left to right: $$ (1 - 2) + 1 $$.
+When operators appear together without parentheses, the order in which they are applied is determined by the *precedence* of the operators. The example shows that multiplication comes before addition. The {% math %} \/ {% endmath %} operator has the same precedence as {% math %} \* {% endmath %}. Likewise for {% math %} + {% endmath %} and {% math %} - {% endmath %}. When multiple operators with the same precedence appear next to each other, as in {% math %} 1 - 2 + 1 {% endmath %}, they are applied left to right: {% math %} (1 - 2) + 1 {% endmath %}.
 
 These rules of precedence are not something you should worry about. When in doubt, just add parentheses.
 
-There is one more arithmetic operator, which you might not immediately recognize. The % symbol is used to represent the remainder operation. $$ X $$ % $$ Y $$ is the remainder of dividing $$ X $$ by $$ Y $$. For example, $$ 314 $$ % $$ 100 $$ produces $$ 14 $$, and $$ 144 $$ % $$ 12 $$ gives $$ 0 $$. Remainder’s precedence is the same as that of multiplication and division. You’ll often see this operator referred to as modulo, though technically *remainder* is more accurate.
+There is one more arithmetic operator, which you might not immediately recognize. The % symbol is used to represent the remainder operation. {% math %} X % Y {% endmath %} is the remainder of dividing {% math %} X {% endmath %} by {% math %} Y {% endmath %}. For example, {% math %} 314 % 100 {% endmath %} produces {% math %} 14 {% endmath %}, and {% math %} 144 % 12 {% endmath %} gives {% math %} 0 {% endmath %}. Remainder’s precedence is the same as that of multiplication and division. You’ll often see this operator referred to as modulo, though technically *remainder* is more accurate.
 
 ## Special numbers
 
 There are three special values in JavaScript that are considered numbers but don’t behave like normal numbers.
 
-The first two are $$Infinity$$ and $$-Infinity$$, which represent the positive and negative infinities. $$Infinity - 1$$ is still $$Infinity$$, and so on. Don’t put too much trust in infinity-based computation. It isn’t mathematically solid, and it will quickly lead to our next special number: NaN.
+The first two are {% math %}Infinity{% endmath %} and {% math %}-Infinity{% endmath %}, which represent the positive and negative infinities. {% math %}Infinity - 1{% endmath %} is still {% math %}Infinity{% endmath %}, and so on. Don’t put too much trust in infinity-based computation. It isn’t mathematically solid, and it will quickly lead to our next special number: NaN.
 
-NaN stands for “not a number”, even though it is a value of the number type. You’ll get this result when you, for example, try to calculate 0 / 0 (zero divided by zero), $$Infinity - Infinity$$, or any number of other numeric operations that don’t yield a precise, meaningful result.
+NaN stands for “not a number”, even though it is a value of the number type. You’ll get this result when you, for example, try to calculate 0 / 0 (zero divided by zero), {% math %}Infinity - Infinity{% endmath %}, or any number of other numeric operations that don’t yield a precise, meaningful result.
 
 ## Strings
 
@@ -201,7 +201,7 @@ NaN is supposed to denote the result of a nonsensical computation, and as such, 
 
 There are also some operations that can be applied to Boolean values themselves. JavaScript supports three logical operators: *and*, *or*, and *not*. These can be used to “reason” about Booleans.
 
-The && operator represents logical *and*. It is a binary operator, and its result is true only if both the values given to it are true.
+The `&&` operator represents logical *and*. It is a binary operator, and its result is true only if both the values given to it are true.
 
 ``` javascript
 console.log(true && false)
@@ -263,9 +263,9 @@ console.log(false == 0)
 // → true
 ```
 
-When an operator is applied to the “wrong” type of value, JavaScript will quietly convert that value to the type it wants, using a set of rules that often aren’t what you want or expect. This is called *type* coercion. So the `null` in the first expression becomes $$0$$, and the "5" in the second expression becomes $$5$$ (from string to number). Yet in the third expression, + tries string concatenation before numeric addition, so the $$1$$ is converted to "1" (from number to string).
+When an operator is applied to the “wrong” type of value, JavaScript will quietly convert that value to the type it wants, using a set of rules that often aren’t what you want or expect. This is called *type* coercion. So the `null` in the first expression becomes {% math %}0{% endmath %}, and the "5" in the second expression becomes {% math %}5{% endmath %} (from string to number). Yet in the third expression, + tries string concatenation before numeric addition, so the {% math %}1{% endmath %} is converted to "1" (from number to string).
 
-When something that doesn’t map to a number in an obvious way (such as "$$five$$" or `undefined`) is converted to a number, the value NaN is produced. Further arithmetic operations on NaN keep producing NaN, so if you find yourself getting one of those in an unexpected place, look for accidental type conversions.
+When something that doesn’t map to a number in an obvious way (such as "{% math %}five{% endmath %}" or `undefined`) is converted to a number, the value NaN is produced. Further arithmetic operations on NaN keep producing NaN, so if you find yourself getting one of those in an unexpected place, look for accidental type conversions.
 
 When comparing values of the same type using ==, the outcome is easy to predict: you should get true when both values are the same, except in the case of NaN. But when the types differ, JavaScript uses a complicated and confusing set of rules to determine what to do. In most cases, it just tries to convert one of the values to the other value’s type. However, when `null` or `undefined` occurs on either side of the operator, it produces true only if both sides are one of `null` or `undefined`.
 
@@ -278,7 +278,7 @@ console.log(null == 0);
 
 That last piece of behavior is often useful. When you want to test whether a value has a real value instead of `null` or `undefined`, you can simply compare it to `null` with the == (or !=) operator.
 
-But what if you want to test whether something refers to the precise value `false`? The rules for converting strings and numbers to Boolean values state that $$0$$, NaN, and the empty string ("") count as `false`, while all the other values count as `true`. Because of this, expressions like `  == false` and `"" == false` are also true. For cases like this, where you do *not* want any automatic type conversions to happen, there are two extra operators: === and !==. The first tests whether a value is precisely equal to the other, and the second tests whether it is not precisely equal. So `"" === false` is false as expected.
+But what if you want to test whether something refers to the precise value `false`? The rules for converting strings and numbers to Boolean values state that {% math %}0{% endmath %}, NaN, and the empty string ("") count as `false`, while all the other values count as `true`. Because of this, expressions like `  == false` and `"" == false` are also true. For cases like this, where you do *not* want any automatic type conversions to happen, there are two extra operators: === and !==. The first tests whether a value is precisely equal to the other, and the second tests whether it is not precisely equal. So `"" === false` is false as expected.
 
 I recommend using the three-character comparison operators defensively to prevent unexpected type conversions from tripping you up. But when you’re certain the types on both sides will be the same, there is no problem with using the shorter operators.
 
@@ -307,6 +307,6 @@ The conditional operator works in a similar way. The first expression is always 
 
 We looked at four types of JavaScript values in this chapter: numbers, strings, Booleans, and undefined values.
 
-Such values are created by typing in their name (`true`, `null`) or value (13, "abc"). You can combine and transform values with operators. We saw binary operators for arithmetic (+, -, *, /, and %), string concatenation (+), comparison (==, !=, ===, !==, <, >, <=, >=), and logic (&&, ||), as well as several unary operators (- to negate a number, ! to negate logically, and typeof to find a value’s type) and a ternary operator (?:) to pick one of two values based on a third value.
+Such values are created by typing in their name (`true`, `null`) or value ({% math %}13{% endmath %}, "abc"). You can combine and transform values with operators. We saw binary operators for arithmetic (`+`, `-`, `*`, `/`, and `%`), string concatenation (`+`), comparison (`==`, `!=`, `===`, `!==`, `<`, `>`, `<=`, `>=`), and logic (`&&`, `||`), as well as several unary operators (- to negate a number, `!` to negate logically, and typeof to find a value’s type) and a ternary operator (`?:`) to pick one of two values based on a third value.
 
 This gives you enough information to use JavaScript as a pocket calculator, but not much more. The next chapter will start tying these expressions together into basic programs.

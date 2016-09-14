@@ -6,3 +6,6 @@ A Gitbook for the Eloquent Javascript free online book:
 
 A livecoding and robo-reading of "Eloquent JavaScript" on LiveCoding.tv:
 - https://www.livecoding.tv/mikeumus/videos/mB7EV-eloquent-javascript-2
+
+###### Developer Notes
+- C9 Start `gitbook serve --port 8080 --watch false --live false`
