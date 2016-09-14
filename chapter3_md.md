@@ -3,11 +3,11 @@
 
 > People think that computer science is the art of geniuses but the actual reality is the opposite, just many people doing things that build on each other, like a wall of mini stones. — **Donald Knuth**
 
-You’ve seen function values, such as alert, and how to call them. Functions are the bread and butter of JavaScript programming. The concept of wrapping a piece of program in a value has many uses. It is a tool to structure larger programs, to reduce repetition, to associate names with subprograms, and to isolate these subprograms from each other.
+You’ve seen function values, such as `alert`, and how to call them. Functions are the bread and butter of JavaScript programming. The concept of wrapping a piece of program in a value has many uses. It is a tool to structure larger programs, to reduce repetition, to associate names with subprograms, and to isolate these subprograms from each other.
 
 The most obvious application of functions is defining new vocabulary. Creating new words in regular, human-language prose is usually bad style. But in programming, it is indispensable.
 
-Typical adult English speakers have some 20,000 words in their vocabulary. Few programming languages come with 20,000 commands built in. And the vocabulary that is available tends to be more precisely defined, and thus less flexible, than in human language. Therefore, we usually have to add some of our own vocabulary to avoid repeating ourselves too much.
+Typical adult English speakers have some 20,000 words in their vocabulary. Few programming languages come with 20,000 commands built in. And the vocabulary that is available tends to be more precisely defined, and thus less flexible, than in human language. Therefore, we usually `have` to add some of our own vocabulary to avoid repeating ourselves too much.
 
 ## Defining a function
 
@@ -22,9 +22,9 @@ console.log(square(12));
 // → 144
 ```
 
-A function is created by an expression that starts with the keyword function. Functions have a set of parameters (in this case, only x) and a body, which contains the statements that are to be executed when the function is called. The function body must always be wrapped in braces, even when it consists of only a single statement (as in the previous example).
+A function is created by an expression that starts with the keyword `function`. Functions have a set of *parameters* (in this case, only x) and a *body*, which contains the statements that are to be executed when the function is called. The function body must always be wrapped in braces, even when it consists of only a single statement (as in the previous example).
 
-A function can have multiple parameters or no parameters at all. In the following example, `makeNoise` does not list any parameter names, whereas power lists two:
+A function can have multiple parameters or no parameters at all. In the following example, `makeNoise` does not list any parameter names, whereas `power` lists two:
 
 ``` javascript
 var makeNoise = function() {
