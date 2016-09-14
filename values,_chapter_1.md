@@ -201,7 +201,7 @@ NaN is supposed to denote the result of a nonsensical computation, and as such, 
 
 There are also some operations that can be applied to Boolean values themselves. JavaScript supports three logical operators: *and*, *or*, and *not*. These can be used to “reason” about Booleans.
 
-The `&&` operator represents logical *and*. It is a binary operator, and its result is true only if both the values given to it are true.
+The && operator represents logical *and*. It is a binary operator, and its result is true only if both the values given to it are true.
 
 ``` javascript
 console.log(true && false)
@@ -299,7 +299,7 @@ This functionality allows the || operator to be used as a way to fall back on a 
 
 The && operator works similarly, but the other way around. When the value to its left is something that converts to false, it returns that value, and otherwise it returns the value on its right.
 
-Another important property of these two operators is that the expression to their right is evaluated only when necessary. In the case of `true || X`, no matter what X is—even if it’s an expression that does something *terrible*—the result will be true, and X is never evaluated. The same goes for `false && X`, which is false and will ignore X. This is called *short-circuit evaluation*.
+Another important property of these two operators is that the expression to their right is evaluated only when necessary. In the case of `true || X`, no matter what X is—even if it’s an expression that does something *terrible*—the result will be true, and X is never evaluated. The same goes for false && X, which is false and will ignore X. This is called *short-circuit evaluation*.
 
 The conditional operator works in a similar way. The first expression is always evaluated, but the second or third value, the one that is not picked, is not.
 
@@ -307,6 +307,6 @@ The conditional operator works in a similar way. The first expression is always 
 
 We looked at four types of JavaScript values in this chapter: numbers, strings, Booleans, and undefined values.
 
-Such values are created by typing in their name (`true`, `null`) or value ({% math %}13{% endmath %}, "abc"). You can combine and transform values with operators. We saw binary operators for arithmetic (`+`, `-`, `*`, `/`, and `%`), string concatenation (`+`), comparison (`==`, `!=`, `===`, `!==`, `<`, `>`, `<=`, `>=`), and logic (`&&`, `||`), as well as several unary operators (- to negate a number, `!` to negate logically, and typeof to find a value’s type) and a ternary operator (`?:`) to pick one of two values based on a third value.
+Such values are created by typing in their name (true, null) or value ({% math %}13{% endmath %}, "abc"). You can combine and transform values with operators. We saw binary operators for arithmetic (+, -, *, /, and %), string concatenation (+), comparison (==, !=, ===, !==, <, >, <=, >=), and logic (&&, ||), as well as several unary operators (- to negate a number, ! to negate logically, and typeof to find a value’s type) and a ternary operator (?:) to pick one of two values based on a third value.
 
 This gives you enough information to use JavaScript as a pocket calculator, but not much more. The next chapter will start tying these expressions together into basic programs.

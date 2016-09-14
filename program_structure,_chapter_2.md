@@ -232,7 +232,7 @@ The flow chart for this program looks something like this:
 
 ### while and do loops
 
-Consider a program that prints all even numbers from $$0$$ to $$12$$. One way to write this is as follows:
+Consider a program that prints all even numbers from {% math %}0{% endmath %} to {% math %}12{% endmath %}. One way to write this is as follows:
 
 ``` javascript
 console.log(0);
@@ -267,9 +267,9 @@ In this loop, we want to both print the current number and add two to our variab
 
 Many JavaScript programmers wrap every single loop or `if` body in braces. They do this both for the sake of consistency and to avoid having to add or remove braces when changing the number of statements in the body later. In this book, I will write most single-statement bodies without braces, since I value brevity. You are free to go with whichever style you prefer.
 
-The variable number demonstrates the way a variable can track the progress of a program. Every time the loop repeats, `number` is incremented by $$2$$. Then, at the beginning of every repetition, it is compared with the number $$12$$ to decide whether the program has done all the work it intended to do.
+The variable number demonstrates the way a variable can track the progress of a program. Every time the loop repeats, `number` is incremented by {% math %}2{% endmath %}. Then, at the beginning of every repetition, it is compared with the number {% math %}12{% endmath %} to decide whether the program has done all the work it intended to do.
 
-As an example that actually does something useful, we can now write a program that calculates and shows the value of $$2$$<sup>10</sup> ($$2$$ to the $$10th$$ power). We use two variables: one to keep track of our result and one to count how often we have multiplied this result by $$2$$. The loop tests whether the second variable has reached 10 yet and then updates both variables.
+As an example that actually does something useful, we can now write a program that calculates and shows the value of {% math %}2{% endmath %}<sup>{% math %}10{% endmath %}</sup> ({% math %}2{% endmath %} to the {% math %}10th{% endmath %} power). We use two variables: one to keep track of our result and one to count how often we have multiplied this result by {% math %}2{% endmath %}. The loop tests whether the second variable has reached 10 yet and then updates both variables.
 
 ``` javascript
 var result = 1;
@@ -282,7 +282,7 @@ console.log(result);
 // → 1024
 ```
 
-The counter could also start at $$1$$ and check for $$<= 10$$, but, for reasons that will become apparent in Chapter 4, it is a good idea to get used to counting from 0.
+The counter could also start at {% math %}1{% endmath %} and check for <= 10, but, for reasons that will become apparent in Chapter 4, it is a good idea to get used to counting from 0.
 
 The `do` loop is a control structure similar to the `while` loop. It differs only on one point: a `do` loop always executes its body at least once, and it starts testing whether it should stop only after that first execution. To reflect this, the test appears after the body of the loop:
 
@@ -317,7 +317,7 @@ This program is exactly equivalent to the earlier even-number-printing example. 
 
 The parentheses after a `for` keyword must contain two semicolons. The part before the first semicolon *initializes* the loop, usually by defining a variable. The second part is the expression that *checks* whether the loop must continue. The final part *updates* the state of the loop after every iteration. In most cases, this is shorter and clearer than a while construct.
 
-Here is the code that computes $$2$$<sup>10</sup>, using `for` instead of `while`:
+Here is the code that computes {% math %}2{% endmath %}<sup>{% math %}10{% endmath %}</sup>, using `for` instead of `while`:
 
 ``` javascript
 var result = 1;
@@ -333,7 +333,7 @@ Note that even though no block is opened with a {, the statement in the loop is 
 
 Having the loop’s condition produce `false` is not the only way a loop can finish. There is a special statement called `break` that has the effect of immediately jumping out of the enclosing loop.
 
-This program illustrates the `break` statement. It finds the first number that is both greater than or equal to 20 and divisible by $$7$$.
+This program illustrates the `break` statement. It finds the first number that is both greater than or equal to 20 and divisible by {% math %}7{% endmath %}.
 
 ``` javascript
 for (var current = 20; ; current++) {
@@ -514,9 +514,9 @@ function magicFunc() {
 
 ### FizzBuzz
 
-Write a program that uses `console.log` to print all the numbers from $$1$$ to $$100$$, with two exceptions. For numbers divisible by $$3$$, print "`Fizz`" instead of the number, and for numbers divisible by $$5$$ (and not $$3$$), print "`Buzz`" instead.
+Write a program that uses `console.log` to print all the numbers from {% math %}1{% endmath %} to {% math %}100{% endmath %}, with two exceptions. For numbers divisible by {% math %}3{% endmath %}, print "`Fizz`" instead of the number, and for numbers divisible by {% math %}5{% endmath %} (and not {% math %}3{% endmath %}), print "`Buzz`" instead.
 
-When you have that working, modify your program to print "`FizzBuzz`", for numbers that are divisible by both $$3$$ and $$5$$ (and still print "`Fizz`" or "`Buzz`" for numbers divisible by only one of those).
+When you have that working, modify your program to print "`FizzBuzz`", for numbers that are divisible by both {% math %}3{% endmath %} and {% math %}5{% endmath %} (and still print "`Fizz`" or "`Buzz`" for numbers divisible by only one of those).
 
 (This is actually an interview question that has been claimed to weed out a significant percentage of programmer candidates. So if you solved it, you’re now allowed to feel good about yourself.)
 
@@ -526,7 +526,7 @@ When you have that working, modify your program to print "`FizzBuzz`", for numbe
 
 ### Chess board
 
-Write a program that creates a string that represents an $$8×8$$ grid, using newline characters to separate lines. At each position of the grid there is either a space or a “#” character. The characters should form a chess board.
+Write a program that creates a string that represents an {% math %}8×8{% endmath %} grid, using newline characters to separate lines. At each position of the grid there is either a space or a “#” character. The characters should form a chess board.
 
 Passing this string to `console.log` should show something like this:
 
