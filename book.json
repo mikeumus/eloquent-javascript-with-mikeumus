@@ -4,7 +4,7 @@
         "ace",
         "exercises",
         "mathjax",
-        "jsbin@git+https://github.com/mikeumus/gitbook-plugin-jsbin.git"
+        "jsbin@git+https://github.com/mikeumus/gitbook-plugin-jsbin.git#0.0.1"
     ],
     "pluginsConfig": {}
 }
