@@ -3,7 +3,8 @@
         "codepen",
         "ace",
         "exercises",
-        "mathjax"
+        "mathjax",
+        "jsbin@git+https://github.com/mikeumus/gitbook-plugin-jsbin.git"
     ],
     "pluginsConfig": {}
 }
