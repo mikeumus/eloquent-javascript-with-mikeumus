@@ -247,7 +247,7 @@ n11n00 - n10n01
 √ n1•n0•n•1n•0
 {% endmath %}
 
-The notation n01 indicates the number of measurements where the first variable (squirrelness) is false (0) and the second variable (pizza) is true (1). In this example, n01 is 9.
+The notation n<sub>01</sub> indicates the number of measurements where the first variable (squirrelness) is false (0) and the second variable (pizza) is true (1). In this example, n01 is 9.
 
 The value n1• refers to the sum of all measurements where the first variable is true, which is 5 in the example table. Likewise, n•0 refers to the sum of the measurements where the second variable is false.
 
