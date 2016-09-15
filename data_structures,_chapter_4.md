@@ -241,11 +241,11 @@ For binary (Boolean) variables, the *phi* coefficient ({$ math $} ϕ {$ endmath 
 
 ϕ can be computed using the following formula, where n refers to the table:
 
-``` javascript
+{% math %}
 ϕ =	
 n11n00 - n10n01
 √ n1•n0•n•1n•0
-```
+{% endmath %}
 
 The notation n01 indicates the number of measurements where the first variable (squirrelness) is false (0) and the second variable (pizza) is true (1). In this example, n01 is 9.
 
