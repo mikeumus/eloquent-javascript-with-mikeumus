@@ -1,7 +1,7 @@
 ### Chapter 4
 # Data Structures: Objects and Arrays
 
-> On two occasions I have been asked, ‘Pray, Mr. Babbage, if you put into the machine wrong figures, will the right answers come out?’ [...] I am not able rightly to apprehend the kind of confusion of ideas that could provoke such a question. **Charles Babbage**, *Passages from the Life of a Philosopher (1864)*
+> On two occasions I have been asked, ‘Pray, Mr. Babbage, if you put into the machine wrong figures, will the right answers come out?’ [...] I am not able rightly to apprehend the kind of confusion of ideas that could provoke such a question. — **Charles Babbage**, *Passages from the Life of a Philosopher (1864)*
 
 Numbers, Booleans, and strings are the bricks that data structures are built from. But you can’t make much of a house out of a single brick. Objects allow us to group values—including other objects—together and thus build more complex structures.
 
