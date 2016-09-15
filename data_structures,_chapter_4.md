@@ -247,11 +247,11 @@ n11n00 - n10n01
 √ n1•n0•n•1n•0
 {% endmath %}
 
-The notation n<sub>01</sub> indicates the number of measurements where the first variable (squirrelness) is false (0) and the second variable (pizza) is true (1). In this example, n01 is 9.
+The notation n<sub>01</sub> indicates the number of measurements where the first variable (squirrelness) is false (0) and the second variable (pizza) is true (1). In this example, n<sub>01</sub> is 9.
 
-The value n1• refers to the sum of all measurements where the first variable is true, which is 5 in the example table. Likewise, n•0 refers to the sum of the measurements where the second variable is false.
+The value n<sub>1•</sub> refers to the sum of all measurements where the first variable is true, which is 5 in the example table. Likewise, n<sub>•0</sub> refers to the sum of the measurements where the second variable is false.
 
-So for the pizza table, the part above the division line (the dividend) would be 1×76 - 4×9 = 40, and the part below it (the divisor) would be the square root of 5×85×10×80, or √340000. This comes out to ϕ ≈ 0.069, which is tiny. Eating pizza does not appear to have influence on the transformations.
+So for the pizza table, the part above the division line (the dividend) would be {% math %}1×76 - 4×9 = 40{% endmath %}, and the part below it (the divisor) would be the square root of {% math %}5×85×10×80{% endmath %}, or {% math %}√340000{% endmath %}. This comes out to {% math %}ϕ ≈ 0.069{% endmath %}, which is tiny. Eating pizza does not appear to have influence on the transformations.
 
 ## Computing correlation
 
@@ -298,17 +298,17 @@ console.log(tableFor("pizza", JOURNAL));
 // → [76, 9, 4, 1]
 ```
 
-The hasEvent function tests whether an entry contains a given event. Arrays have an indexOf method that tries to find a given value (in this case, the event name) in the array and returns the index at which it was found or -1 if it wasn’t found. So if the call to indexOf doesn’t return -1, then we know the event was found in the entry.
+The `hasEvent` function tests whether an entry contains a given event. Arrays have an `indexOf` method that tries to find a given value (in this case, the event name) in the array and returns the index at which it was found or -1 if it wasn’t found. So if the call to `indexOf` doesn’t return -1, then we know the event was found in the entry.
 
-The body of the loop in tableFor figures out which box in the table each journal entry falls into by checking whether the entry contains the specific event it’s interested in and whether the event happens alongside a squirrel incident. The loop then adds one to the number in the array that corresponds to this box on the table.
+The body of the loop in `tableFor` figures out which box in the table each journal entry falls into by checking whether the entry contains the specific event it’s interested in and whether the event happens alongside a squirrel incident. The loop then adds one to the number in the array that corresponds to this box on the table.
 
 We now have the tools we need to compute individual correlations. The only step remaining is to find a correlation for every type of event that was recorded and see whether anything stands out. But how should we store these correlations once we compute them?
 
 ## Objects as maps
 
-One possible way is to store all the correlations in an array, using objects with name and value properties. But that makes looking up the correlation for a given event somewhat cumbersome: you’d have to loop over the whole array to find the object with the right name. We could wrap this lookup process in a function, but we would still be writing more code, and the computer would be doing more work than necessary.
+One possible way is to store all the correlations in an array, using objects with `name` and `value` properties. But that makes looking up the correlation for a given event somewhat cumbersome: you’d have to loop over the whole array to find the object with the right `name`. We could wrap this lookup process in a function, but we would still be writing more code, and the computer would be doing more work than necessary.
 
-A better way is to use object properties named after the event types. We can use the square bracket access notation to create and read the properties and can use the in operator to test whether a given property exists.
+A better way is to use object properties named after the event types. We can use the square bracket access notation to create and read the properties and can use the `in` operator to test whether a given property exists.
 
 ``` javascript
 var map = {};
@@ -324,11 +324,11 @@ console.log(map["touched tree"]);
 // → -0.081
 ```
 
-A map is a way to go from values in one domain (in this case, event names) to corresponding values in another domain (in this case, ϕ coefficients).
+A `map` is a way to go from values in one domain (in this case, event names) to corresponding values in another domain (in this case, ϕ coefficients).
 
 There are a few potential problems with using objects like this, which we will discuss in Chapter 6, but for the time being, we won’t worry about those.
 
-What if we want to find all the events for which we have stored a coefficient? The properties don’t form a predictable series, like they would in an array, so we cannot use a normal for loop. JavaScript provides a loop construct specifically for going over the properties of an object. It looks a little like a normal for loop but distinguishes itself by the use of the word in.
+What if we want to find all the events for which we have stored a coefficient? The properties don’t form a predictable series, like they would in an array, so we cannot use a normal `for` loop. JavaScript provides a loop construct specifically for going over the properties of an object. It looks a little like a normal `for` loop but distinguishes itself by the use of the word `in`.
 
 ``` javascript
 for (var event in map)
@@ -338,9 +338,9 @@ for (var event in map)
 // → The correlation for 'touched tree' is -0.081
 ```
 
-The final analysis
+### The final analysis
 
-To find all the types of events that are present in the data set, we simply process each entry in turn and then loop over the events in that entry. We keep an object phis that has correlation coefficients for all the event types we have seen so far. Whenever we run across a type that isn’t in the phis object yet, we compute its correlation and add it to the object.
+To find all the types of events that are present in the data set, we simply process each entry in turn and then loop over the events in that entry. We keep an object `phis` that has correlation coefficients for all the event types we have seen so far. Whenever we run across a type that isn’t in the `phis` object yet, we compute its correlation and add it to the object.
 
 ``` javascript
 function gatherCorrelations(journal) {
@@ -374,7 +374,7 @@ for (var event in correlations)
 // and so on...
 ```
 
-Most correlations seem to lie close to zero. Eating carrots, bread, or pudding apparently does not trigger squirrel-lycanthropy. It does seem to occur somewhat more often on weekends, however. Let’s filter the results to show only correlations greater than 0.1 or less than -0.1.
+Most correlations seem to lie close to zero. Eating carrots, bread, or pudding apparently does not trigger squirrel-lycanthropy. It *does* seem to occur somewhat more often on weekends, however. Let’s filter the results to show only correlations greater than 0.1 or less than -0.1.
 
 ``` javascript
 for (var event in correlations) {
@@ -410,13 +410,13 @@ Well, that’s unmistakable! The phenomenon occurs precisely when Jacques eats p
 
 Knowing this, Jacques simply stops eating peanuts altogether and finds that this completely puts an end to his transformations.
 
-All is well with Jacques for a while. But a few years later, he loses his job and is eventually forced to take employment with a circus, where he performs as The Incredible Squirrelman by stuffing his mouth with peanut butter before every show. One day, fed up with this pitiful existence, Jacques fails to change back into his human form, hops through a crack in the circus tent, and vanishes into the forest. He is never seen again.
+All is well with Jacques for a while. But a few years later, he loses his job and is eventually forced to take employment with a circus, where he performs as *The Incredible Squirrelman* by stuffing his mouth with peanut butter before *every* show. One day, fed up with this pitiful existence, Jacques fails to change back into his human form, hops through a crack in the circus tent, and vanishes into the forest. He is never seen again.
 
 ## Further arrayology
 
 Before finishing up this chapter, I want to introduce you to a few more object-related concepts. We’ll start by introducing some generally useful array methods.
 
-We saw push and pop, which add and remove elements at the end of an array, earlier in this chapter. The corresponding methods for adding and removing things at the start of an array are called unshift and shift.
+We saw `push` and `pop`, which add and remove elements at the end of an array, earlier in this chapter. The corresponding methods for adding and removing things at the start of an array are called `unshift` and `shift`.
 
 ``` javascript
 var todoList = [];
@@ -439,17 +439,17 @@ console.log([1, 2, 3, 2, 1].indexOf(2));
 // → 1
 console.log([1, 2, 3, 2, 1].lastIndexOf(2));
 // → 3
-Both indexOf and lastIndexOf take an optional second argument that indicates where to start searching from.
+Both `indexOf` and `lastIndexOf` take an optional second argument that indicates where to start searching from.
 
-Another fundamental method is slice, which takes a start index and an end index and returns an array that has only the elements between those indices. The start index is inclusive, the end index exclusive.
+Another fundamental method is `slice`, which takes a start index and an end index and returns an array that has only the elements between those indices. The start index is inclusive, the end index exclusive.
 
 console.log([0, 1, 2, 3, 4].slice(2, 4));
 // → [2, 3]
 console.log([0, 1, 2, 3, 4].slice(2));
 // → [2, 3, 4]
-When the end index is not given, slice will take all of the elements after the start index. Strings also have a slice method, which has a similar effect.
+When the end index is not given, `slice` will take all of the elements after the start index. Strings also have a `slice` method, which has a similar effect.
 
-The concat method can be used to glue arrays together, similar to what the + operator does for strings. The following example shows both concat and slice in action. It takes an array and an index, and it returns a new array that is a copy of the original array with the element at the given index removed.
+The `concat` method can be used to glue arrays together, similar to what the + operator does for strings. The following example shows both `concat` and `slice` in action. It takes an array and an index, and it returns a new array that is a copy of the original array with the element at the given index removed.
 
 ``` javascript
 function remove(array, index) {
@@ -462,7 +462,7 @@ console.log(remove(["a", "b", "c", "d", "e"], 2));
 
 ## Strings and their properties
 
-We can read properties like length and `toUpperCase` from string values. But if you try to add a new property, it doesn’t stick.
+We can read properties like `length` and `toUpperCase` from string values. But if you try to add a new property, it doesn’t stick.
 
 ``` javascript
 var myString = "Fido";
@@ -473,7 +473,7 @@ console.log(myString.myProperty);
 
 Values of type string, number, and Boolean are not objects, and though the language doesn’t complain if you try to set new properties on them, it doesn’t actually store those properties. The values are immutable and cannot be changed.
 
-But these types do have some built-in properties. Every string value has a number of methods. The most useful ones are probably slice and indexOf, which resemble the array methods of the same name.
+But these types do have some built-in properties. Every string value has a number of methods. The most useful ones are probably `slice` and `indexOf`, which resemble the array methods of the same name.
 
 ``` javascript
 console.log("coconuts".slice(4, 7));
@@ -489,14 +489,14 @@ console.log("one two three".indexOf("ee"));
 // → 11
 ```
 
-The trim method removes whitespace (spaces, newlines, tabs, and similar characters) from the start and end of a string.
+The `trim` method removes whitespace (spaces, newlines, tabs, and similar characters) from the start and end of a string.
 
 ``` javascript
 console.log("  okay \n ".trim());
 // → okay
 ```
 
-We have already seen the string type’s length property. Accessing the individual characters in a string can be done with the charAt method but also by simply reading numeric properties, like you’d do for an array.
+We have already seen the string type’s `length` property. Accessing the individual characters in a string can be done with the `charAt` method but also by simply reading numeric properties, like you’d do for an array.
 
 ``` javascript
 var string = "abc";
@@ -506,10 +506,11 @@ console.log(string.charAt(0));
 // → a
 console.log(string[1]);
 // → b
-The arguments object
 ```
 
-Whenever a function is called, a special variable named arguments is added to the environment in which the function body runs. This variable refers to an object that holds all of the arguments passed to the function. Remember that in JavaScript you are allowed to pass more (or fewer) arguments to a function than the number of parameters the function itself declares.
+## The arguments object
+
+Whenever a function is called, a special variable named `arguments` is added to the environment in which the function body runs. This variable refers to an object that holds all of the arguments passed to the function. Remember that in JavaScript you are allowed to pass more (or fewer) arguments to a function than the number of parameters the function itself declares.
 
 ``` javascript
 function noArguments() {}
@@ -518,9 +519,9 @@ function threeArguments(a, b, c) {}
 threeArguments(); // And so is this
 ```
 
-The arguments object has a length property that tells us the number of arguments that were really passed to the function. It also has a property for each argument, named 0, 1, 2, and so on.
+The `arguments` object has a `length` property that tells us the number of arguments that were really passed to the function. It also has a property for each argument, named 0, 1, 2, and so on.
 
-If that sounds a lot like an array to you, you’re right, it is a lot like an array. But this object, unfortunately, does not have any array methods (like `slice` or `indexOf`), so it is a little harder to use than a real array.
+If that sounds a lot like an array to you, you’re right, it `is` a lot like an array. But this object, unfortunately, does not have any array methods (like `slice` or `indexOf`), so it is a little harder to use than a real array.
 
 ``` javascript
 function argumentCounter() {
@@ -530,7 +531,7 @@ argumentCounter("Straw man", "Tautology", "Ad hominem");
 // → You gave me 3 arguments.
 ```
 
-Some functions can take any number of arguments, like `console.log`. These typically loop over the values in their arguments object. They can be used to create very pleasant interfaces. For example, remember how we created the entries to Jacques’ journal.
+Some functions can take any number of arguments, like `console.log`. These typically loop over the values in their `arguments` object. They can be used to create very pleasant interfaces. For example, remember how we created the entries to Jacques’ journal.
 
 ``` javascript
 addEntry(["work", "touched tree", "pizza", "running",
@@ -550,19 +551,19 @@ addEntry(true, "work", "touched tree", "pizza",
          "running", "television");
 ```
 
-This version reads its first argument (squirrel) in the normal way and then goes over the rest of the arguments (the loop starts at index 1, skipping the first) to gather them into an array.
+This version reads its first argument (`squirrel`) in the normal way and then goes over the rest of the arguments (the loop starts at index 1, skipping the first) to gather them into an array.
 
 ## The Math object
 
-As we’ve seen, Math is a grab-bag of number-related utility functions, such as `Math.max` (maximum), `Math.min` (minimum), and `Math.sqrt` (square root).
+As we’ve seen, `Math` is a grab-bag of number-related utility functions, such as `Math.max` (maximum), `Math.min` (minimum), and `Math.sqrt` (square root).
 
-The Math object is used simply as a container to group a bunch of related functionality. There is only one Math object, and it is almost never useful as a value. Rather, it provides a namespace so that all these functions and values do not have to be global variables.
+The `Math` object is used simply as a container to group a bunch of related functionality. There is only one `Math` object, and it is almost never useful as a value. Rather, it provides a *namespace* so that all these functions and values do not have to be global variables.
 
-Having too many global variables “pollutes” the namespace. The more names that have been taken, the more likely you are to accidentally overwrite the value of some variable. For example, it’s not unlikely that you’ll want to name something max in one of your programs. Since JavaScript’s built-in max function is tucked safely inside the Math object, we don’t have to worry about overwriting it.
+Having too many global variables “pollutes” the namespace. The more names that have been taken, the more likely you are to accidentally overwrite the value of some variable. For example, it’s not unlikely that you’ll want to name something `max` in one of your programs. Since JavaScript’s built-in `max` function is tucked safely inside the `Math` object, we don’t have to worry about overwriting it.
 
 Many languages will stop you, or at least warn you, when you are defining a variable with a name that is already taken. JavaScript does neither, so be careful.
 
-Back to the Math object. If you need to do trigonometry, Math can help. It contains cos (cosine), sin (sine), and tan (tangent), as well as their inverse functions, acos, asin, and atan, respectively. The number π (pi)—or at least the closest approximation that fits in a JavaScript number—is available as `Math.PI`. (There is an old programming tradition of writing the names of constant values in all caps.)
+Back to the `Math` object. If you need to do trigonometry, `Math` can help. It contains `cos` (cosine), `sin` (sine), and `tan` (tangent), as well as their inverse functions, `acos`, `asin`, and `atan`, respectively. The number {% math %}π{% endmath %} (pi)—or at least the closest approximation that fits in a JavaScript number—is available as `Math.PI`. (There is an old programming tradition of writing the names of constant values in all caps.)
 
 ``` javascript
 function randomPointOnCircle(radius) {
@@ -598,7 +599,7 @@ console.log(Math.floor(Math.random() * 10));
 
 Multiplying the random number by 10 gives us a number greater than or equal to zero, and below 10. Since `Math.floor` rounds down, this expression will produce, with equal chance, any number from 0 through 9.
 
-There are also the functions Math.ceil (for “ceiling”, which rounds up to a whole number) and `Math.round` (to the nearest whole number).
+There are also the functions `Math.ceil` (for “ceiling”, which rounds up to a whole number) and `Math.round` (to the nearest whole number).
 
 ## The global object
 
@@ -616,11 +617,11 @@ console.log(window.myVar);
 
 Objects and arrays (which are a specific kind of object) provide ways to group several values into a single value. Conceptually, this allows us to put a bunch of related things in a bag and run around with the bag, instead of trying to wrap our arms around all of the individual things and trying to hold on to them separately.
 
-Most values in JavaScript have properties, the exceptions being null and undefined. Properties are accessed using value.propName or `value["propName"]`. Objects tend to use names for their properties and store more or less a fixed set of them. Arrays, on the other hand, usually contain varying numbers of conceptually identical values and use numbers (starting from 0) as the names of their properties.
+Most values in JavaScript have properties, the exceptions being `null` and `undefined`. Properties are accessed using `value.propName` or `value["propName"]`. Objects tend to use names for their properties and store more or less a fixed set of them. Arrays, on the other hand, usually contain varying numbers of conceptually identical values and use numbers (starting from 0) as the names of their properties.
 
-There are some named properties in arrays, such as length and a number of methods. Methods are functions that live in properties and (usually) act on the value they are a property of.
+There *are* some named properties in arrays, such as `length` and a number of methods. Methods are functions that live in properties and (usually) act on the value they are a property of.
 
-Objects can also serve as maps, associating values with names. The in operator can be used to find out whether an object contains a property with a given name. The same keyword can also be used in a for loop (for (var name in object)) to loop over an object’s properties.
+Objects can also serve as maps, associating values with names. The `in` operator can be used to find out whether an object contains a property with a given name. The same keyword can also be used in a `for` loop (`for (var name in object)`) to loop over an object’s properties.
 
 ## Exercises
 
@@ -632,11 +633,11 @@ The introduction of this book alluded to the following as a nice way to compute 
 console.log(sum(range(1, 10)));
 ```
 
-Write a range function that takes two arguments, start and end, and returns an array containing all the numbers from start up to (and including) end.
+Write a `range` function that takes two arguments, `start` and `end`, and returns an array containing all the numbers from `start` up to (and including) `end`.
 
-Next, write a sum function that takes an array of numbers and returns the sum of these numbers. Run the previous program and see whether it does indeed return 55.
+Next, write a `sum` function that takes an array of numbers and returns the sum of these numbers. Run the previous program and see whether it does indeed return 55.
 
-As a bonus assignment, modify your range function to take an optional third argument that indicates the “step” value used to build up the array. If no step is given, the array elements go up by increments of one, corresponding to the old behavior. The function call `range(1, 10, 2)` should return `[1, 3, 5, 7, 9]`. Make sure it also works with negative step values so that `range(5, 2, -1)` produces `[5, 4, 3, 2]`.
+As a bonus assignment, modify your `range` function to take an optional third argument that indicates the “step” value used to build up the array. If no step is given, the array elements go up by increments of one, corresponding to the old behavior. The function call `range(1, 10, 2)` should return `[1, 3, 5, 7, 9]`. Make sure it also works with negative step values so that `range(5, 2, -1)` produces `[5, 4, 3, 2]`.
 
 ``` javascript
 // Your code here.
@@ -651,7 +652,7 @@ console.log(sum(range(1, 10)));
 
 ### Reversing an array
 
-Arrays have a method reverse, which changes the array by inverting the order in which its elements appear. For this exercise, write two functions, `reverseArray` and `reverseArrayInPlace`. The first, reverseArray, takes an array as argument and produces a new array that has the same elements in the inverse order. The second, `reverseArrayInPlace`, does what the reverse method does: it modifies the array given as argument in order to reverse its elements. Neither may use the standard reverse method.
+Arrays have a method `reverse`, which changes the array by inverting the order in which its elements appear. For this exercise, write two functions, `reverseArray` and `reverseArrayInPlace`. The first, `reverseArray`, takes an array as argument and produces a new array that has the same elements in the inverse order. The second, `reverseArrayInPlace`, does what the `reverse` method does: it modifies the array given as argument in order to reverse its elements. Neither may use the standard `reverse` method.
 
 Thinking back to the notes about side effects and pure functions in the previous chapter, which variant do you expect to be useful in more situations? Which one is more efficient?
 
@@ -668,7 +669,7 @@ console.log(arrayValue);
 
 ### A list
 
-Objects, as generic blobs of values, can be used to build all sorts of data structures. A common data structure is the list (not to be confused with the array). A list is a nested set of objects, with the first object holding a reference to the second, the second to the third, and so on.
+Objects, as generic blobs of values, can be used to build all sorts of data structures. A common data structure is the *list* (not to be confused with the array). A list is a nested set of objects, with the first object holding a reference to the second, the second to the third, and so on.
 
 ``` javascript
 var list = {
@@ -685,12 +686,13 @@ var list = {
 
 The resulting objects form a chain, like this:
 
-A linked list
-A nice thing about lists is that they can share parts of their structure. For example, if I create two new values {value: 0, rest: list} and {value: -1, rest: list} (with list referring to the variable defined earlier), they are both independent lists, but they share the structure that makes up their last three elements. In addition, the original list is also still a valid three-element list.
+![A linked list](http://eloquentjavascript.net/img/linked-list.svg)
 
-Write a function arrayToList that builds up a data structure like the previous one when given `[1, 2, 3]` as argument, and write a `listToArray` function that produces an array from a list. Also write the helper functions prepend, which takes an element and a list and creates a new list that adds the element to the front of the input list, and nth, which takes a list and a number and returns the element at the given position in the list, or undefined when there is no such element.
+A nice thing about lists is that they can share parts of their structure. For example, if I create two new values `{value: 0, rest: list}` and `{value: -1, rest: list}` (with `list` referring to the variable defined earlier), they are both independent lists, but they share the structure that makes up their last three elements. In addition, the original list is also still a valid three-element list.
 
-If you haven’t already, also write a recursive version of nth.
+Write a function `arrayToList` that builds up a data structure like the previous one when given `[1, 2, 3]` as argument, and write a `listToArray` function that produces an array from a list. Also write the helper functions prepend, which takes an element and a list and creates a new list that adds the element to the front of the input list, and `nth`, which takes a list and a number and returns the element at the given position in the list, or `undefined` when there is no such element.
+
+If you haven’t already, also write a recursive version of `nth`.
 
 ``` javascript
 // Your code here.
@@ -709,9 +711,9 @@ console.log(nth(arrayToList([10, 20, 30]), 1));
 
 The `==` operator compares objects by identity. But sometimes, you would prefer to compare the values of their actual properties.
 
-Write a function, deepEqual, that takes two values and returns true only if they are the same value or are objects with the same properties whose values are also equal when compared with a recursive call to `deepEqual`.
+Write a function, `deepEqual`, that takes two values and returns true only if they are the same value or are objects with the same properties whose values are also equal when compared with a recursive call to `deepEqual`.
 
-To find out whether to compare two things by identity (use the `===` operator for that) or by looking at their properties, you can use the typeof operator. If it produces "object" for both values, you should do a deep comparison. But you have to take one silly exception into account: by a historical accident, typeof null also produces "object".
+To find out whether to compare two things by identity (use the `===` operator for that) or by looking at their properties, you can use the `typeof` operator. If it produces "`object`" for both values, you should do a deep comparison. But you have to take one silly exception into account: by a historical accident, `typeof null` also produces "object".
 
 ``` javascript
 // Your code here.
