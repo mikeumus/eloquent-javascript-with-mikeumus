@@ -39,30 +39,30 @@ console.log(listOfNumbers[1 - 1]);
 // → 2
 ```
 
-The notation for getting at the elements inside an array also uses square brackets. A pair of square brackets immediately after an expression, with another expression inside of them, will look up the element in the left-hand expression that corresponds to the index given by the expression in the brackets.
+The notation for getting at the elements inside an array also uses square brackets. A pair of square brackets immediately after an expression, with another expression inside of them, will look up the element in the left-hand expression that corresponds to the *index* given by the expression in the brackets.
 
 The first index of an array is zero, not one. So the first element can be read with `listOfNumbers[0]`. If you don’t have a programming background, this convention might take some getting used to. But zero-based counting has a long tradition in technology, and as long as this convention is followed consistently (which it is, in JavaScript), it works well.
 
 ## Properties
 
-We’ve seen a few suspicious-looking expressions like myString.length (to get the length of a string) and Math.max (the maximum function) in past examples. These are expressions that access a property of some value. In the first case, we access the length property of the value in myString. In the second, we access the property named max in the Math object (which is a collection of mathematics-related values and functions).
+We’ve seen a few suspicious-looking expressions like `myString.length` (to get the length of a string) and `Math.max` (the maximum function) in past examples. These are expressions that access a *property* of some value. In the first case, we access the `length` property of the value in `myString`. In the second, we access the property named `max` in the `Math` object (which is a collection of mathematics-related values and functions).
 
-Almost all JavaScript values have properties. The exceptions are null and undefined. If you try to access a property on one of these nonvalues, you get an error.
+Almost all JavaScript values have properties. The exceptions are `null` and `undefined`. If you try to access a property on one of these nonvalues, you get an error.
 
 ``` javascript
 null.length;
 // → TypeError: Cannot read property 'length' of null
 ```
 
-The two most common ways to access properties in JavaScript are with a dot and with square brackets. Both `value.x` and `value[x]` access a property on value—but not necessarily the same property. The difference is in how x is interpreted. When using a dot, the part after the dot must be a valid variable name, and it directly names the property. When using square brackets, the expression between the brackets is evaluated to get the property name. Whereas value.x fetches the property of value named “x”, `value[x]` tries to evaluate the expression x and uses the result as the property name.
+The two most common ways to access properties in JavaScript are with a dot and with square brackets. Both `value.x` and `value[x]` access a property on `value`—but not necessarily the same property. The difference is in how x is interpreted. When using a dot, the part after the dot must be a valid variable name, and it directly names the property. When using square brackets, the expression between the brackets is *evaluated* to get the property name. Whereas value.x fetches the property of value named “x”, `value[x]` tries to evaluate the expression x and uses the result as the property name.
 
-So if you know that the property you are interested in is called “length”, you say value.length. If you want to extract the property named by the value held in the variable i, you say value[i]. And because property names can be any string, if you want to access a property named “2” or “John Doe”, you must use square brackets: value[2] or `value["John Doe"]`. This is the case even though you know the precise name of the property in advance, because neither “2” nor “John Doe” is a valid variable name and so cannot be accessed through dot notation.
+So if you know that the property you are interested in is called “length”, you say `value.length`. If you want to extract the property named by the value held in the variable `i`, you say `value[i]`. And because property names can be any string, if you want to access a property named “2” or “John Doe”, you must use square brackets: value[2] or `value["John Doe"]`. This is the case even though you know the precise name of the property in advance, because neither “2” nor “John Doe” is a valid variable name and so cannot be accessed through dot notation.
 
-The elements in an array are stored in properties. Because the names of these properties are numbers and we often need to get their name from a variable, we have to use the bracket syntax to access them. The length property of an array tells us how many elements it contains. This property name is a valid variable name, and we know its name in advance, so to find the length of an array, you typically write `array.length` because that is easier to write than `array["length"]`.
+The elements in an array are stored in properties. Because the names of these properties are numbers and we often need to get their name from a variable, we have to use the bracket syntax to access them. The `length` property of an array tells us how many elements it contains. This property name is a valid variable name, and we know its name in advance, so to find the length of an array, you typically write `array.length` because that is easier to write than `array["length"]`.
 
 ## Methods
 
-Both string and array objects contain, in addition to the length property, a number of properties that refer to function values.
+Both string and array objects contain, in addition to the `length` property, a number of properties that refer to function values.
 
 ``` javascript
 var doh = "Doh";
@@ -72,11 +72,11 @@ console.log(doh.toUpperCase());
 // → DOH
 ```
 
-Every string has a toUpperCase property. When called, it will return a copy of the string, in which all letters have been converted to uppercase. There is also toLowerCase. You can guess what that does.
+Every string has a `toUpperCase` property. When called, it will return a copy of the string, in which all letters have been converted to uppercase. There is also `toLowerCase`. You can guess what that does.
 
-Interestingly, even though the call to toUpperCase does not pass any arguments, the function somehow has access to the string "Doh", the value whose property we called. How this works is described in Chapter 6.
+Interestingly, even though the call to `toUpperCase` does not pass any arguments, the function somehow has access to the string "Doh", the value whose property we called. How this works is described in Chapter 6.
 
-Properties that contain functions are generally called methods of the value they belong to. As in, “toUpperCase is a method of a string”.
+Properties that contain functions are generally called *methods* of the value they belong to. As in, “`toUpperCase` is a method of a string”.
 
 This example demonstrates some methods that array objects have:
 
@@ -94,13 +94,13 @@ console.log(mack);
 // → ["Mack", "the"]
 ```
 
-The push method can be used to add values to the end of an array. The pop method does the opposite: it removes the value at the end of the array and returns it. An array of strings can be flattened to a single string with the join method. The argument given to join determines the text that is glued between the array’s elements.
+The `push` method can be used to add values to the end of an array. The `pop` method does the opposite: it removes the value at the end of the array and returns it. An array of strings can be flattened to a single string with the `join` method. The argument given to `join` determines the text that is glued between the array’s elements.
 
 ## Objects
 
 Back to the weresquirrel. A set of daily log entries can be represented as an array. But the entries do not consist of just a number or a string—each entry needs to store a list of activities and a Boolean value that indicates whether Jacques turned into a squirrel. Ideally, we would like to group these values together into a single value and then put these grouped values into an array of log entries.
 
-Values of the type object are arbitrary collections of properties, and we can add or remove these properties as we please. One way to create an object is by using a curly brace notation.
+Values of the type `object` are arbitrary collections of properties, and we can add or remove these properties as we please. One way to create an object is by using a curly brace notation.
 
 ``` javascript
 var day1 = {
@@ -126,16 +126,17 @@ var descriptions = {
 };
 ```
 
-This means that curly braces have two meanings in JavaScript. At the start of a statement, they start a block of statements. In any other position, they describe an object. Fortunately, it is almost never useful to start a statement with a curly-brace object, and in typical programs, there is no ambiguity between these two uses.
+This means that curly braces have *two* meanings in JavaScript. At the start of a statement, they start a block of statements. In any other position, they describe an object. Fortunately, it is almost never useful to start a statement with a curly-brace object, and in typical programs, there is no ambiguity between these two uses.
 
-Reading a property that doesn’t exist will produce the value undefined, which happens the first time we try to read the wolf property in the previous example.
+Reading a property that doesn’t exist will produce the value `undefined`, which happens the first time we try to read the `wolf` property in the previous example.
 
 It is possible to assign a value to a property expression with the = operator. This will replace the property’s value if it already existed or create a new property on the object if it didn’t.
 
-To briefly return to our tentacle model of variable bindings—property bindings are similar. They grasp values, but other variables and properties might be holding onto those same values. You may think of objects as octopuses with any number of tentacles, each of which has a name inscribed on it.
+To briefly return to our tentacle model of variable bindings—property bindings are similar. They *grasp* values, but other variables and properties might be holding onto those same values. You may think of objects as octopuses with any number of tentacles, each of which has a name inscribed on it.
 
-Artist's representation of an object
-The delete operator cuts off a tentacle from such an octopus. It is a unary operator that, when applied to a property access expression, will remove the named property from the object. This is not a common thing to do, but it is possible.
+![Artist's representation of an object](http://eloquentjavascript.net/img/octopus-object.jpg)
+
+The `delete` operator cuts off a tentacle from such an octopus. It is a unary operator that, when applied to a property access expression, will remove the named property from the object. This is not a common thing to do, but it is possible.
 
 ``` javascript
 var anObject = {left: 1, right: 2};
@@ -150,11 +151,12 @@ console.log("right" in anObject);
 // → true
 ```
 
-The binary in operator, when applied to a string and an object, returns a Boolean value that indicates whether that object has that property. The difference between setting a property to undefined and actually deleting it is that, in the first case, the object still has the property (it just doesn’t have a very interesting value), whereas in the second case the property is no longer present and in will return false.
+The binary `in` operator, when applied to a string and an object, returns a Boolean value that indicates whether that object has that property. The difference between setting a property to `undefined` and actually deleting it is that, in the first case, the object still *has* the property (it just doesn’t have a very interesting value), whereas in the second case the property is no longer present and `in` will return `false`.
 
-Arrays, then, are just a kind of object specialized for storing sequences of things. If you evaluate typeof [1, 2], this produces "object". You can see them as long, flat octopuses with all their arms in a neat row, labeled with numbers.
+Arrays, then, are just a kind of object specialized for storing sequences of things. If you evaluate `typeof [1, 2]`, this produces "`object`". You can see them as long, flat octopuses with all their arms in a neat row, labeled with numbers.
 
-Artist's representation of an array
+![Artist's representation of an array](http://eloquentjavascript.net/img/octopus-array.jpg)
+
 So we can represent Jacques’ journal as an array of objects.
 
 ``` javascript
@@ -174,11 +176,11 @@ var journal = [
 
 ## Mutability
 
-We will get to actual programming real soon now. But first, there’s one last piece of theory to understand.
+We will get to actual programming *real* soon now. But first, there’s one last piece of theory to understand.
 
-We’ve seen that object values can be modified. The types of values discussed in earlier chapters, such as numbers, strings, and Booleans, are all immutable—it is impossible to change an existing value of those types. You can combine them and derive new values from them, but when you take a specific string value, that value will always remain the same. The text inside it cannot be changed. If you have reference to a string that contains "cat", it is not possible for other code to change a character in that string to make it spell "rat".
+We’ve seen that object values can be modified. The types of values discussed in earlier chapters, such as numbers, strings, and Booleans, are all *immutable*—it is impossible to change an existing value of those types. You can combine them and derive new values from them, but when you take a specific string value, that value will always remain the same. The text inside it cannot be changed. If you have reference to a string that contains "`cat`", it is not possible for other code to change a character in that string to make it spell "`rat`".
 
-With objects, on the other hand, the content of a value can be modified by changing its properties.
+With objects, on the other hand, the content of a value *can* be modified by changing its properties.
 
 When we have two numbers, 120 and 120, we can consider them precisely the same number, whether or not they refer to the same physical bits. But with objects, there is a difference between having two references to the same object and having two different objects that contain the same properties. Consider the following code:
 
@@ -199,9 +201,9 @@ console.log(object3.value);
 // → 10
 ```
 
-The object1 and object2 variables grasp the same object, which is why changing object1 also changes the value of `object2`. The variable `object3` points to a different object, which initially contains the same properties as object1 but lives a separate life.
+The `object1` and `object2` variables grasp the *same* object, which is why changing `object1` also changes the value of `object2`. The variable `object3` points to a different object, which initially contains the same properties as `object1` but lives a separate life.
 
-JavaScript’s == operator, when comparing objects, will return true only if both objects are precisely the same value. Comparing different objects will return false, even if they have identical contents. There is no “deep” comparison operation built into JavaScript, which looks at object’s contents, but it is possible to write it yourself (which will be one of the exercises at the end of this chapter).
+JavaScript’s == operator, when comparing objects, will return `true` only if both objects are precisely the same value. Comparing different objects will return `false`, even if they have identical contents. There is no “deep” comparison operation built into JavaScript, which looks at object’s contents, but it is possible to write it yourself (which will be one of the exercises at the end of this chapter).
 
 ## The lycanthrope’s log
 
@@ -231,11 +233,12 @@ addEntry(["weekend", "cycling", "break", "peanuts",
           
 Once he has enough data points, he intends to compute the correlation between his squirrelification and each of the day’s events and ideally learn something useful from those correlations.
 
-Correlation is a measure of dependence between variables (“variables” in the statistical sense, not the JavaScript sense). It is usually expressed as a coefficient that ranges from -1 to 1. Zero correlation means the variables are not related, whereas a correlation of one indicates that the two are perfectly related—if you know one, you also know the other. Negative one also means that the variables are perfectly related but that they are opposites—when one is true, the other is false.
+*Correlation* is a measure of dependence between variables (“variables” in the statistical sense, not the JavaScript sense). It is usually expressed as a coefficient that ranges from -1 to 1. Zero correlation means the variables are not related, whereas a correlation of one indicates that the two are perfectly related—if you know one, you also know the other. Negative one also means that the variables are perfectly related but that they are opposites—when one is true, the other is false.
 
-For binary (Boolean) variables, the phi coefficient (ϕ) provides a good measure of correlation and is relatively easy to compute. To compute ϕ, we need a table n that contains the number of times the various combinations of the two variables were observed. For example, we could take the event of eating pizza and put that in a table like this:
+For binary (Boolean) variables, the *phi* coefficient ({$ math $} ϕ {$ endmath $}) provides a good measure of correlation and is relatively easy to compute. To compute ϕ, we need a table n that contains the number of times the various combinations of the two variables were observed. For example, we could take the event of eating pizza and put that in a table like this:
 
-Eating pizza versus turning into a squirrel
+![Eating pizza versus turning into a squirrel](http://eloquentjavascript.net/img/pizza-squirrel.svg)
+
 ϕ can be computed using the following formula, where n refers to the table:
 
 ``` javascript
