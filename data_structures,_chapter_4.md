@@ -3,7 +3,7 @@
 
 > On two occasions I have been asked, ‘Pray, Mr. Babbage, if you put into the machine wrong figures, will the right answers come out?’ [...] I am not able rightly to apprehend the kind of confusion of ideas that could provoke such a question. — **Charles Babbage**, *Passages from the Life of a Philosopher (1864)*
 
-Numbers, Booleans, and strings are the bricks that data structures are built from. But you can’t make much of a house out of a single brick. Objects allow us to group values—including other objects—together and thus build more complex structures.
+Numbers, Booleans, and strings are the bricks that data structures are built from. But you can’t make much of a house out of a single brick. *Objects* allow us to group values—including other objects—together and thus build more complex structures.
 
 The programs we have built so far have been seriously hampered by the fact that they were operating only on simple data types. This chapter will add a basic understanding of data structures to your toolkit. By the end of it, you’ll know enough to start writing some useful programs.
 
@@ -13,9 +13,9 @@ The chapter will work through a more or less realistic programming example, intr
 
 Every now and then, usually between eight and ten in the evening, Jacques finds himself transforming into a small furry rodent with a bushy tail.
 
-On one hand, Jacques is quite glad that he doesn’t have classic lycanthropy. Turning into a squirrel tends to cause fewer problems than turning into a wolf. Instead of having to worry about accidentally eating the neighbor (that would be awkward), he worries about being eaten by the neighbor’s cat. After two occasions where he woke up on a precariously thin branch in the crown of an oak, naked and disoriented, he has taken to locking the doors and windows of his room at night and putting a few walnuts on the floor to keep himself busy.
+On one hand, Jacques is quite glad that he doesn’t have classic lycanthropy. Turning into a squirrel tends to cause fewer problems than turning into a wolf. Instead of having to worry about accidentally eating the neighbor (*that* would be awkward), he worries about being eaten by the neighbor’s cat. After two occasions where he woke up on a precariously thin branch in the crown of an oak, naked and disoriented, he has taken to locking the doors and windows of his room at night and putting a few walnuts on the floor to keep himself busy.
 
-##The weresquirrel
+![The weresquirrel](http://eloquentjavascript.net/img/weresquirrel.png)
 
 That takes care of the cat and oak problems. But Jacques still suffers from his condition. The irregular occurrences of the transformation make him suspect that they might be triggered by something. For a while, he believed that it happened only on days when he had touched trees. So he stopped touching trees entirely and even avoided going near them. But the problem persisted.
 
@@ -29,7 +29,7 @@ To work with a chunk of digital data, we’ll first have to find a way to repres
 
 We could get creative with strings—after all, strings can be any length, so we can put a lot of data into them—and use "2 3 5 7 11" as our representation. But this is awkward. You’d have to somehow extract the digits and convert them back to numbers to access them.
 
-Fortunately, JavaScript provides a data type specifically for storing sequences of values. It is called an array and is written as a list of values between square brackets, separated by commas.
+Fortunately, JavaScript provides a data type specifically for storing sequences of values. It is called an *array* and is written as a list of values between square brackets, separated by commas.
 
 ``` javascript
 var listOfNumbers = [2, 3, 5, 7, 11];
