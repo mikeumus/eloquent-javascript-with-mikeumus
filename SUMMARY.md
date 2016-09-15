@@ -5,5 +5,5 @@
 * [Values, Chapter 1](values,_chapter_1.md)
 * [Program Structure, Chapter 2](program_structure,_chapter_2.md)
 * [Functions, Chapter 3](chapter3_md.md)
-* Data Structures, Chapter 4
+* [Data Structures, Chapter 4](data_structures,_chapter_4.md)
 
