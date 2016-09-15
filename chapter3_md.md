@@ -45,15 +45,15 @@ console.log(power(2, 10));
 // → 1024
 ```
 
-Some functions produce a value, such as power and square, and some don’t, such as makeNoise, which produces only a side effect. A return statement determines the value the function returns. When control comes across such a statement, it immediately jumps out of the current function and gives the returned value to the code that called the function. The return keyword without an expression after it will cause the function to return undefined.
+Some functions produce a value, such as `power` and `square`, and some don’t, such as `makeNoise`, which produces only a side effect. A `return` statement determines the value the function returns. When control comes across such a statement, it immediately jumps out of the current function and gives the returned value to the code that called the function. The return keyword without an expression after it will cause the function to return `undefined`.
 
 ## Parameters and scopes
 
-The parameters to a function behave like regular variables, but their initial values are given by the caller of the function, not the code in the function itself.
+The parameters to a function behave like regular variables, but their initial values are given by the *caller* of the function, not the code in the function itself.
 
-An important property of functions is that the variables created inside of them, including their parameters, are local to the function. This means, for example, that the result variable in the power example will be newly created every time the function is called, and these separate incarnations do not interfere with each other.
+An important property of functions is that the variables created inside of them, including their parameters, are *local* to the function. This means, for example, that the `result` variable in the `power` example will be newly created every time the function is called, and these separate incarnations do not interfere with each other.
 
-This “localness” of variables applies only to the parameters and to variables declared with the var keyword inside the function body. Variables declared outside of any function are called global, because they are visible throughout the program. It is possible to access such variables from inside a function, as long as you haven’t declared a local variable with the same name.
+This “localness” of variables applies only to the parameters and to variables declared with the `var` keyword inside the function body. Variables declared outside of any function are called *global*, because they are visible throughout the program. It is possible to access such variables from inside a function, as long as you haven’t declared a local variable with the same name.
 
 The following code demonstrates this. It defines and calls two functions that both assign a value to the variable x. The first one declares the variable as local and thus changes only the local variable. The second does not declare x locally, so references to x inside of it refer to the global variable x defined at the top of the example.
 
@@ -75,11 +75,11 @@ console.log(x);
 // → inside f2
 ```
 
-This behavior helps prevent accidental interference between functions. If all variables were shared by the whole program, it’d take a lot of effort to make sure no name is ever used for two different purposes. And if you did reuse a variable name, you might see strange effects from unrelated code messing with the value of your variable. By treating function-local variables as existing only within the function, the language makes it possible to read and understand functions as small universes, without having to worry about all the code at once.
+This behavior helps prevent accidental interference between functions. If all variables were shared by the whole program, it’d take a lot of effort to make sure no name is ever used for two different purposes. And if you *did* reuse a variable name, you might see strange effects from unrelated code messing with the value of your variable. By treating function-local variables as existing only within the function, the language makes it possible to read and understand functions as small universes, without having to worry about all the code at once.
 
 ## Nested scope
 
-JavaScript distinguishes not just between global and local variables. Functions can be created inside other functions, producing several degrees of locality.
+JavaScript distinguishes not just between *global* and *local* variables. Functions can be created inside other functions, producing several degrees of locality.
 
 For example, this rather nonsensical function has two functions inside of it:
 
@@ -109,9 +109,9 @@ console.log(landscape());
 // → ___/''''\______/'\_
 ```
 
-The flat and mountain functions can “see” the variable called result, since they are inside the function that defines it. But they cannot see each other’s count variables since they are outside each other’s scope. The environment outside of the landscape function doesn’t see any of the variables defined inside landscape.
+The `flat` and `mountain` functions can “see” the variable called `result`, since they are inside the function that defines it. But they cannot see each other’s count variables since they are outside each other’s scope. The environment outside of the `landscape` function doesn’t see any of the variables defined inside `landscape`.
 
-In short, each local scope can also see all the local scopes that contain it. The set of variables visible inside a function is determined by the place of that function in the program text. All variables from blocks around a function’s definition are visible—meaning both those in function bodies that enclose it and those at the top level of the program. This approach to variable visibility is called lexical scoping.
+In short, each local scope can also see all the local scopes that contain it. The set of variables visible inside a function is determined by the place of that function in the program text. All variables from blocks *around* a function’s definition are visible—meaning both those in function bodies that enclose it and those at the top level of the program. This approach to variable visibility is called *lexical scoping*.
 
 People who have experience with other programming languages might expect that any block of code between braces produces a new local environment. But in JavaScript, functions are the only things that create a new scope. You are allowed to use free-standing blocks.
 
@@ -124,9 +124,9 @@ var something = 1;
 // Outside of the block again...
 ```
 
-But the something inside the block refers to the same variable as the one outside the block. In fact, although blocks like this are allowed, they are useful only to group the body of an if statement or a loop.
+But the `something` inside the block refers to the same variable as the one outside the block. In fact, although blocks like this are allowed, they are useful only to group the body of an `if` statement or a loop.
 
-If you find this odd, you’re not alone. The next version of JavaScript will introduce a let keyword, which works like var but creates a variable that is local to the enclosing block, not the enclosing function.
+If you find this odd, you’re not alone. The next version of JavaScript will introduce a `let` keyword, which works like `var` but creates a variable that is local to the enclosing *block*, not the enclosing *function*.
 
 ## Functions as values
 
@@ -146,7 +146,7 @@ In Chapter 5, we will discuss the wonderful things that can be done by passing a
 
 ## Declaration notation
 
-There is a slightly shorter way to say “var square = function…”. The function keyword can also be used at the start of a statement, as in the following:
+There is a slightly shorter way to say “`var square = function`…”. The `function` keyword can also be used at the start of a statement, as in the following:
 
 ``` javascript
 function square(x) {
@@ -154,7 +154,7 @@ function square(x) {
 }
 ```
 
-This is a function declaration. The statement defines the variable square and points it at the given function. So far so good. There is one subtlety with this form of function definition, however.
+This is a function *declaration*. The statement defines the variable `square` and points it at the given function. So far so good. There is one subtlety with this form of function definition, however.
 
 ``` javascript
 console.log("The future says:", future());
@@ -164,9 +164,9 @@ function future() {
 }
 ```
 
-This code works, even though the function is defined below the code that uses it. This is because function declarations are not part of the regular top-to-bottom flow of control. They are conceptually moved to the top of their scope and can be used by all the code in that scope. This is sometimes useful because it gives us the freedom to order code in a way that seems meaningful, without worrying about having to define all functions above their first use.
+This code works, even though the function is defined *below* the code that uses it. This is because function declarations are not part of the regular top-to-bottom flow of control. They are conceptually moved to the top of their scope and can be used by all the code in that scope. This is sometimes useful because it gives us the freedom to order code in a way that seems meaningful, without worrying about having to define all functions above their first use.
 
-What happens when you put such a function definition inside a conditional (if) block or a loop? Well, don’t do that. Different JavaScript platforms in different browsers have traditionally done different things in that situation, and the latest standard actually forbids it. If you want your programs to behave consistently, only use this form of function-defining statements in the outermost block of a function or program.
+What happens when you put such a function definition inside a conditional (`if`) block or a loop? Well, don’t do that. Different JavaScript platforms in different browsers have traditionally done different things in that situation, and the latest standard actually forbids it. If you want your programs to behave consistently, only use this form of function-defining statements in the outermost block of a function or program.
 
 ``` javascript
 function example() {
@@ -189,7 +189,7 @@ greet("Harry");
 console.log("Bye");
 ```
 
-A run through this program goes roughly like this: the call to greet causes control to jump to the start of that function (line 2). It calls console.log (a built-in browser function), which takes control, does its job, and then returns control to line 2. Then it reaches the end of the greet function, so it returns to the place that called it, at line 4. The line after that calls console.log again.
+A run through this program goes roughly like this: the call to greet causes control to jump to the start of that function (line 2). It calls `console.log` (a built-in browser function), which takes control, does its job, and then returns control to line 2. Then it reaches the end of the `greet` function, so it returns to the place that called it, at line 4. The line after that calls `console.log` again.
 
 We could show the flow of control schematically like this:
 ``` javascript
@@ -202,11 +202,11 @@ top
 top
 ```
 
-Because a function has to jump back to the place of the call when it returns, the computer must remember the context from which the function was called. In one case, console.log has to jump back to the greet function. In the other case, it jumps back to the end of the program.
+Because a function has to jump back to the place of the call when it returns, the computer must remember the context from which the function was called. In one case, `console.log` has to jump back to the `greet` function. In the other case, it jumps back to the end of the program.
 
-The place where the computer stores this context is the call stack. Every time a function is called, the current context is put on top of this “stack”. When the function returns, it removes the top context from the stack and uses it to continue execution.
+The place where the computer stores this context is the *call stack*. Every time a function is called, the current context is put on top of this “stack”. When the function returns, it removes the top context from the stack and uses it to continue execution.
 
-Storing this stack requires space in the computer’s memory. When the stack grows too big, the computer will fail with a message like “out of stack space” or “too much recursion”. The following code illustrates this by asking the computer a really hard question, which causes an infinite back-and-forth between two functions. Rather, it would be infinite, if the computer had an infinite stack. As it is, we will run out of space, or “blow the stack”.
+Storing this stack requires space in the computer’s memory. When the stack grows too big, the computer will fail with a message like “out of stack space” or “too much recursion”. The following code illustrates this by asking the computer a really hard question, which causes an infinite back-and-forth between two functions. Rather, it *would* be infinite, if the computer had an infinite stack. As it is, we will run out of space, or “blow the stack”.
 
 ``` javascript
 function chicken() {
@@ -223,14 +223,17 @@ console.log(chicken() + " came first.");
 
 The following code is allowed and executes without any problem:
 
+``` javascript
 alert("Hello", "Good Evening", "How do you do?");
-The function alert officially accepts only one argument. Yet when you call it like this, it doesn’t complain. It simply ignores the other arguments and shows you “Hello”.
+```
 
-JavaScript is extremely broad-minded about the number of arguments you pass to a function. If you pass too many, the extra ones are ignored. If you pass too few, the missing parameters simply get assigned the value undefined.
+The function `alert` officially accepts only one argument. Yet when you call it like this, it doesn’t complain. It simply ignores the other arguments and shows you “Hello”.
+
+JavaScript is extremely broad-minded about the number of arguments you pass to a function. If you pass too many, the extra ones are ignored. If you pass too few, the missing parameters simply get assigned the value `undefined`.
 
 The downside of this is that it is possible—likely, even—that you’ll accidentally pass the wrong number of arguments to functions and no one will tell you about it.
 
-The upside is that this behavior can be used to have a function take “optional” arguments. For example, the following version of power can be called either with two arguments or with a single argument, in which case the exponent is assumed to be two, and the function behaves like square.
+The upside is that this behavior can be used to have a function take “optional” arguments. For example, the following version of `power` can be called either with two arguments or with a single argument, in which case the exponent is assumed to be two, and the function behaves like `square`.
 
 ``` javascript
 function power(base, exponent) {
@@ -248,7 +251,7 @@ console.log(power(4, 3));
 // → 64
 ```
 
-In the next chapter, we will see a way in which a function body can get at the exact list of arguments that were passed. This is helpful because it makes it possible for a function to accept any number of arguments. For example, console.log makes use of this—it outputs all of the values it is given.
+In the next chapter, we will see a way in which a function body can get at the exact list of arguments that were passed. This is helpful because it makes it possible for a function to accept any number of arguments. For example, `console.log` makes use of this—it outputs all of the values it is given.
 
 ``` javascript
 console.log("R", 2, "D", 2);
@@ -259,7 +262,7 @@ console.log("R", 2, "D", 2);
 
 The ability to treat functions as values, combined with the fact that local variables are “re-created” every time a function is called, brings up an interesting question. What happens to local variables when the function call that created them is no longer active?
 
-The following code shows an example of this. It defines a function, wrapValue, which creates a local variable. It then returns a function that accesses and returns this local variable.
+The following code shows an example of this. It defines a function, `wrapValue`, which creates a local variable. It then returns a function that accesses and returns this local variable.
 
 ``` javascript
 function wrapValue(n) {
@@ -277,7 +280,7 @@ console.log(wrap2());
 
 This is allowed and works as you’d hope—the variable can still be accessed. In fact, multiple instances of the variable can be alive at the same time, which is another good illustration of the concept that local variables really are re-created for every call—different calls can’t trample on one another’s local variables.
 
-This feature—being able to reference a specific instance of local variables in an enclosing function—is called closure. A function that “closes over” some local variables is called a closure. This behavior not only frees you from having to worry about lifetimes of variables but also allows for some creative use of function values.
+This feature—being able to reference a specific instance of local variables in an enclosing function—is called *closure*. A function that “closes over” some local variables is called a closure. This behavior not only frees you from having to worry about lifetimes of variables but also allows for some creative use of function values.
 
 With a slight change, we can turn the previous example into a way to create functions that multiply by an arbitrary amount.
 
@@ -293,15 +296,15 @@ console.log(twice(5));
 // → 10
 ```
 
-The explicit localVariable from the wrapValue example isn’t needed since a parameter is itself a local variable.
+The explicit `localVariable` from the `wrapValue` example isn’t needed since a parameter is itself a local variable.
 
-Thinking about programs like this takes some practice. A good mental model is to think of the function keyword as “freezing” the code in its body and wrapping it into a package (the function value). So when you read return `function(...) {...}`, think of it as returning a handle to a piece of computation, frozen for later use.
+Thinking about programs like this takes some practice. A good mental model is to think of the `function` keyword as “freezing” the code in its body and wrapping it into a package (the function value). So when you read `return function(...) {...}`, think of it as returning a handle to a piece of computation, frozen for later use.
 
-In the example, multiplier returns a frozen chunk of code that gets stored in the twice variable. The last line then calls the value in this variable, causing the frozen code (return number * factor;) to be activated. It still has access to the factor variable from the multiplier call that created it, and in addition it gets access to the argument passed when unfreezing it, 5, through its number parameter.
+  In the example, `multiplier` returns a frozen chunk of code that gets stored in the `twice` variable. The last line then calls the value in this variable, causing the frozen code (`return number * factor;`) to be activated. It still has access to the `factor` variable from the `multiplier` call that created it, and in addition it gets access to the argument passed when unfreezing it, 5, through its `number` parameter.
 
 ## Recursion
 
-It is perfectly okay for a function to call itself, as long as it takes care not to overflow the stack. A function that calls itself is called recursive. Recursion allows some functions to be written in a different style. Take, for example, this alternative implementation of power:
+It is perfectly okay for a function to call itself, as long as it takes care not to overflow the stack. A function that calls itself is called *recursive*. Recursion allows some functions to be written in a different style. Take, for example, this alternative implementation of power:
 
 ``` javascript
 function power(base, exponent) {
@@ -321,7 +324,7 @@ But this implementation has one important problem: in typical JavaScript impleme
 
 The dilemma of speed versus elegance is an interesting one. You can see it as a kind of continuum between human-friendliness and machine-friendliness. Almost any program can be made faster by making it bigger and more convoluted. The programmer must decide on an appropriate balance.
 
-In the case of the earlier power function, the inelegant (looping) version is still fairly simple and easy to read. It doesn’t make much sense to replace it with the recursive version. Often, though, a program deals with such complex concepts that giving up some efficiency in order to make the program more straightforward becomes an attractive choice.
+In the case of the earlier `power` function, the inelegant (looping) version is still fairly simple and easy to read. It doesn’t make much sense to replace it with the recursive version. Often, though, a program deals with such complex concepts that giving up some efficiency in order to make the program more straightforward becomes an attractive choice.
 
 The basic rule, which has been repeated by many programmers and with which I wholeheartedly agree, is to not worry about efficiency until you know for sure that the program is too slow. If it is, find out which parts are taking up the most time, and start exchanging elegance for efficiency in those parts.
 
@@ -353,15 +356,15 @@ console.log(findSolution(24));
 // → (((1 * 3) + 5) * 3)
 ```
 
-Note that this program doesn’t necessarily find the shortest sequence of operations. It is satisfied when it finds any sequence at all.
+Note that this program doesn’t necessarily find the *shortest* sequence of operations. It is satisfied when it finds any sequence at all.
 
 I don’t necessarily expect you to see how it works right away. But let’s work through it, since it makes for a great exercise in recursive thinking.
 
-The inner function find does the actual recursing. It takes two arguments—the current number and a string that records how we reached this number—and returns either a string that shows how to get to the target or null.
+The inner function `find` does the actual recursing. It takes two arguments—the current number and a string that records how we reached this number—and returns either a string that shows how to get to the target or `null`.
 
-To do this, the function performs one of three actions. If the current number is the target number, the current history is a way to reach that target, so it is simply returned. If the current number is greater than the target, there’s no sense in further exploring this history since both adding and multiplying will only make the number bigger. And finally, if we’re still below the target, the function tries both possible paths that start from the current number, by calling itself twice, once for each of the allowed next steps. If the first call returns something that is not null, it is returned. Otherwise, the second call is returned—regardless of whether it produces a string or null.
+To do this, the function performs one of three actions. If the current number is the target number, the current history is a way to reach that target, so it is simply returned. If the current number is greater than the target, there’s no sense in further exploring this history since both adding and multiplying will only make the number bigger. And finally, if we’re still below the target, the function tries both possible paths that start from the current number, by calling itself twice, once for each of the allowed next steps. If the first call returns something that is not `null`, it is returned. Otherwise, the second call is returned—regardless of whether it produces a string or `null`.
 
-To better understand how this function produces the effect we’re looking for, let’s look at all the calls to find that are made when searching for a solution for the number 13.
+To better understand how this function produces the effect we’re looking for, let’s look at all the calls to `find` that are made when searching for a solution for the number 13.
 
 ``` javascript
 find(1, "1")
@@ -379,7 +382,7 @@ find(1, "1")
         found!
 ```
 
-The indentation suggests the depth of the call stack. The first time find is called it calls itself twice to explore the solutions that start with (1 + 5) and (1 * 3). The first call tries to find a solution that starts with (1 + 5) and, using recursion, explores every solution that yields a number less than or equal to the target number. Since it doesn’t find a solution that hits the target, it returns null back to the first call. There the `||` operator causes the call that explores (1 * 3) to happen. This search has more luck because its first recursive call, through yet another recursive call, hits upon the target number, 13. This innermost recursive call returns a string, and each of the || operators in the intermediate calls pass that string along, ultimately returning our solution.
+The indentation suggests the depth of the call stack. The first time `find` is called it calls itself twice to explore the solutions that start with (1 + 5) and (1 * 3). The first call tries to find a solution that starts with (1 + 5) and, using recursion, explores *every* solution that yields a number less than or equal to the target number. Since it doesn’t find a solution that hits the target, it returns null back to the first call. There the `||` operator causes the call that explores (1 * 3) to happen. This search has more luck because its first recursive call, through yet *another* recursive call, hits upon the target number, 13. This innermost recursive call returns a string, and each of the || operators in the intermediate calls pass that string along, ultimately returning our solution.
 
 ## Growing functions
 
@@ -391,7 +394,7 @@ The second way is that you find you need some functionality that you haven’t w
 
 How difficult it is to find a good name for a function is a good indication of how clear a concept it is that you’re trying to wrap. Let’s go through an example.
 
-We want to write a program that prints two numbers, the numbers of cows and chickens on a farm, with the words Cows and Chickens after them, and zeros padded before both numbers so that they are always three digits long.
+We want to write a program that prints two numbers, the numbers of cows and chickens on a farm, with the words `Cows` and `Chickens` after them, and zeros padded before both numbers so that they are always three digits long.
 
 ``` javascript
 007 Cows
@@ -414,7 +417,7 @@ function printFarmInventory(cows, chickens) {
 printFarmInventory(7, 11);
 ```
 
-Adding .length after a string value will give us the length of that string. Thus, the while loops keep adding zeros in front of the number strings until they are at least three characters long.
+Adding `.length` after a string value will give us the length of that string. Thus, the `while` loops keep adding zeros in front of the number strings until they are at least three characters long.
 
 Mission accomplished! But just as we are about to send the farmer the code (along with a hefty invoice, of course), he calls and tells us he’s also started keeping pigs, and couldn’t we please extend the software to also print pigs?
 
@@ -439,7 +442,7 @@ printFarmInventory(7, 11, 3);
 
 It works! But that name, `printZeroPaddedWithLabel`, is a little awkward. It conflates three things—printing, zero-padding, and adding a label—into a single function.
 
-Instead of lifting out the repeated part of our program wholesale, let’s try to pick out a single concept.
+Instead of lifting out the repeated part of our program wholesale, let’s try to pick out a single *concept*.
 
 ``` javascript
 function zeroPad(number, width) {
